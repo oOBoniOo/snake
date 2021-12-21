@@ -1,11 +1,6 @@
 # SNAKE
 
-<div>
-<p style = 'text-align:center;'>
-<img src="./imgs/snake_logo.jpg" alt="JuveYell" width="300px">
-</p>
-<p><h2 style = 'text-align:center;'> Un remember del juego de la serpiente</h2></p>
-</div>
+<p align='center'><img src="./imgs/snake_logo.jpg" alt= "ini"></p>
 
 <div>
 <p style = 'text-align:center;'>
@@ -14,3 +9,5 @@ src="https://www.youtube.com/embed/OYXPH796qXE?start=127">
 </iframe>
 </div>
 </p>
+
+[![WebCam Capture](https://img.youtube.com/vi/OYXPH796qXE/0.jpg)](https://www.youtube.com/embed/OYXPH796qXE?start=127)
