@@ -4,23 +4,24 @@
 
 # Index
 
-1. [Enlace](#id1)
+1. [Enlace](#id111)
 2. [Descripción](#id2)
-3. [Tecnologías empleadas](#id3)
-4. [GitHub](#id4)
-5. [Specific labels](#id5)
-6. [Deploy](#id6)
-7. [Project life cycle](#id7)
-8. [Mandatory slides](#id8)
-9. [Presentation rules](#id9)
-10. [Evaluation](#id10)
-11. [Project ideas](#id11)
-12. [References and inspiration](#id12)
-13. [Repositories](#id13)
+3. [Estructura proyecto](#id3)
+4. [Tecnologías empleadas](#id4)
+5. [Compilacion y Ejecución](#id5)
+6. [Código](#id6)
+7. [Licencias](#id7)
+8. [Agradecimientos](#id8)
+9. [?](#id9)
+10. [?](#id10)
+11. [?](#id11)
+12. [?](#id12)
+13. [?](#id13)
 
-<div id='id1'/>
 [![WebCam Capture](https://img.youtube.com/vi/OYXPH796qXE/0.jpg)](https://www.youtube.com/embed/OYXPH796qXE?start=127)
 
+<div id='id111'/>
+<a href='https://oobonioo.github.io/snake'>https://oobonioo.github.io/snake</a>
 <div id='id1'/>
 ## Descripción
 
@@ -44,7 +45,9 @@
 - Lodash https://www.npmjs.com/package/lodash
 
 <div id='id3'/>
+
 ##Estructura proyecto
+
 <div id='id4'/>
 ### Compilacion y Ejecución
 
@@ -57,3 +60,12 @@ yarn init -y
 yarn install
 yarn run dev
 ```
+
+<div id='id5'/>
+## Código
+
+<div id='id6'/>
+## Licencias
+
+<div id='id7'/>
+## Agradecimientos
