@@ -9,6 +9,8 @@
 
 <div>
 <p style = 'text-align:center;'>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OYXPH796qXE?start=127" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="600" height = "420"
+src="https://www.youtube.com/embed/OYXPH796qXE?start=127">
+</iframe>
 </div>
 </p>
