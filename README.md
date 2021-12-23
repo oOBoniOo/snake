@@ -71,16 +71,19 @@ yarn run dev
 [Inicio](#id0)
 
 <div id='id5'/>
-## Código
+
+## Código de ejemplo
 
 [Inicio](#id0)
 
 <div id='id6'/>
+
 ## Licencias
 
 [Inicio](#id0)
 
 <div id='id7'/>
+
 ## Agradecimientos
 
 [Inicio](#id0)
