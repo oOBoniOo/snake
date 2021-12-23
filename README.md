@@ -4,13 +4,13 @@
 <div id='id0'/>
 # Index
 
-1. [Enlace](#id111)
+1. [Enlace](#id1)
 2. [Descripción](#id2)
 3. [Estructura proyecto](#id3)
 4. [Tecnologías empleadas](#id4)
 5. [Recursos](#id5)
-6. [Compilacion y Ejecución]
-7. [Código](#id6)
+6. [Compilacion y Ejecución](#id6)
+7. [Código]
 8. [Licencias](#id7)
 9. [Agradecimientos](#id8)
 10. [?](#id9)
@@ -21,11 +21,11 @@
 
 [![WebCam Capture](https://img.youtube.com/vi/OYXPH796qXE/0.jpg)](https://www.youtube.com/embed/OYXPH796qXE?start=127)
 
-<div id='id111'/>
+<div id='id1'/>
 
 <a href='https://oobonioo.github.io/snake'>https://oobonioo.github.io/snake</a>
 
-<div id='id1'/>
+<div id='id2'/>
 
 ## Descripción
 
@@ -40,7 +40,7 @@
 <p>Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb. </p>
 
 <!-- end slipsum code -->
-<div id='id2'/>
+<div id='id3'/>
 
 ## Tecnología empleada
 
@@ -51,13 +51,13 @@
 
 [Inicio](#id0)
 
-<div id='id3'/>
+<div id='id4'/>
 
 ## Estructura proyecto
 
 [Inicio](#id0)
 
-<div id='id4'/>
+<div id='id5'/>
 
 ## Compilacion y Ejecución
 
@@ -73,7 +73,7 @@ yarn run dev
 
 [Inicio](#id0)
 
-<div id='id5'/>
+<div id='id6'/>
 
 ## Recursos
 
@@ -85,13 +85,13 @@ yarn run dev
 
 [Inicio](#id0)
 
-<div id='id6'/>
+<div id='id7'/>
 
 ## Licencias
 
 [Inicio](#id0)
 
-<div id='id7'/>
+<div id='id8'/>
 
 ## Agradecimientos
 
