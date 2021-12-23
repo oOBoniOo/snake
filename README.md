@@ -1,6 +1,6 @@
 # SNAKE
 
-<p align='center'><img src="./imgs/snake_logo.jpg" alt= "ini"></p>
+<p align='center'><img src="./public/imgs/snake_logo.jpg" alt= "ini"></p>
 <div id='id0'/>
 # Index
 
@@ -8,22 +8,25 @@
 2. [Descripción](#id2)
 3. [Estructura proyecto](#id3)
 4. [Tecnologías empleadas](#id4)
-5. [Compilacion y Ejecución](#id5)
-6. [Código](#id6)
-7. [Licencias](#id7)
-8. [Agradecimientos](#id8)
-9. [?](#id9)
-10. [?](#id10)
-11. [?](#id11)
-12. [?](#id12)
-13. [?](#id13)
+5. [Recursos](#id5)
+6. [Compilacion y Ejecución]
+7. [Código](#id6)
+8. [Licencias](#id7)
+9. [Agradecimientos](#id8)
+10. [?](#id9)
+11. [?](#id10)
+12. [?](#id11)
+13. [?](#id12)
+14. [?](#id13)
 
 [![WebCam Capture](https://img.youtube.com/vi/OYXPH796qXE/0.jpg)](https://www.youtube.com/embed/OYXPH796qXE?start=127)
 
 <div id='id111'/>
+
 <a href='https://oobonioo.github.io/snake'>https://oobonioo.github.io/snake</a>
 
 <div id='id1'/>
+
 ## Descripción
 
 <!-- start slipsum code -->
@@ -71,6 +74,12 @@ yarn run dev
 [Inicio](#id0)
 
 <div id='id5'/>
+
+## Recursos
+
+### Sprites
+
+<p align='center'><img src="./public/sprites/SnakeFlip.png" alt= "ini"></p>
 
 ## Código de ejemplo
 
