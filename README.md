@@ -1,7 +1,7 @@
 # SNAKE
 
 <p align='center'><img src="./imgs/snake_logo.jpg" alt= "ini"></p>
-
+<div id='id0'/>
 # Index
 
 1. [Enlace](#id111)
@@ -22,6 +22,7 @@
 
 <div id='id111'/>
 <a href='https://oobonioo.github.io/snake'>https://oobonioo.github.io/snake</a>
+
 <div id='id1'/>
 ## Descripción
 
@@ -37,6 +38,7 @@
 
 <!-- end slipsum code -->
 <div id='id2'/>
+
 ## Tecnología empleada
 
 - NodeJS https://nodejs.org/
@@ -44,12 +46,17 @@
 - ESLint https://eslint.org/
 - Lodash https://www.npmjs.com/package/lodash
 
+[Inicio](#id0)
+
 <div id='id3'/>
 
-##Estructura proyecto
+## Estructura proyecto
+
+[Inicio](#id0)
 
 <div id='id4'/>
-### Compilacion y Ejecución
+
+## Compilacion y Ejecución
 
 Hacer .....
 
@@ -61,11 +68,19 @@ yarn install
 yarn run dev
 ```
 
+[Inicio](#id0)
+
 <div id='id5'/>
 ## Código
+
+[Inicio](#id0)
 
 <div id='id6'/>
 ## Licencias
 
+[Inicio](#id0)
+
 <div id='id7'/>
 ## Agradecimientos
+
+[Inicio](#id0)
