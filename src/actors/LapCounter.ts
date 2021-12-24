@@ -1,5 +1,5 @@
 import { Actor } from "./Actor";
-import { Circuit } from "../state/Circuit";
+import { Circuit } from "../state/Objets";
 
 export class LapCounter extends Actor {
     update() { }

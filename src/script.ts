@@ -6,7 +6,7 @@ import { FPSViewer } from "./actors/FPSViewer";
 //import { LapCounter } from "./actors/LapCounter";
 //import { Map } from "./actors/Map";
 //import { Pacman } from "./actors/Pacman";
-import { Circuit, createCircuit } from "./state/Circuit";
+import { Objets, createCircuit } from "./state/Objets";
 import { MAP_A, MAP_B } from "./utils/keyboardMap";
 
 window.onload = () => {
@@ -23,7 +23,7 @@ window.onload = () => {
 
 	createCircuit(snake);
 
-	let actors: Array<IActor> = [fps, chrono, Circuit, snake, ...Circuit.barriers];
+	let actors: Array<IActor> = [fps, chrono, Objets, snake, ...Objets.barriers];
 
 	let lastFrame = 0;
 	const render = (time: number) => {

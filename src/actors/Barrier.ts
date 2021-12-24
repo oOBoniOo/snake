@@ -1,4 +1,4 @@
-import { Circuit } from "../state/Circuit";
+import { Objets } from "../state/Objets";
 import { Point } from "../types/Point";
 import { angleToRad } from "../utils/angleToRad";
 import { Actor, IActor } from "./Actor";
@@ -30,7 +30,7 @@ export class Barrier extends Actor {
 		);
 		// console.log(Circuit.currentBarrier, this.barrierindex);
 		if (distance < 30) {
-			if (Circuit.touchingBarrier(this.barrierindex)) {
+			if (Objets.touchingBarrier(this.barrierindex)) {
 				this.touched = true;
 			}
 		}

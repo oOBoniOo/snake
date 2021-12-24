@@ -4,7 +4,7 @@ import { Barrier } from "../actors/Barrier";
 import { angleToRad } from "../utils/angleToRad";
 
 
-class CircuitManager {
+class ObjetsManager {
 	barriers: Barrier[];
 	currentBarrier: number;
 	currentLap: number;
@@ -64,8 +64,8 @@ class CircuitManager {
 	}
 }
 
-export let Circuit: CircuitManager;
+export let Objets: ObjetsManager;
 
 export const createCircuit = (actor: IActor) => {
-	Circuit = new CircuitManager(actor);
+	Objets = new ObjetsManager(actor);
 };
