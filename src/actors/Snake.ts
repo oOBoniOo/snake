@@ -48,7 +48,7 @@ export class Snake extends Actor implements IActor {
 		if (checkLimits(newPos)) {
 			this.position = newPos;
 		}
-		console.log(this.angle);
+		console.log('Angulo snake: ',this.angle);
 	}
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
 		ctx.fillStyle = this.snakeColor;

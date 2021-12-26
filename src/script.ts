@@ -1,13 +1,13 @@
 import { Actor, IActor } from "./actors/Actor";
-import { Barrier } from "./actors/Barrier";
+import { Feed } from "./actors/Feed";
 import { Snake } from "./actors/Snake";
-import { Chronometer } from "./actors/Chronometer";
+//import { Chronometer } from "./actors/Chronometer";
 import { FPSViewer } from "./actors/FPSViewer";
 //import { LapCounter } from "./actors/LapCounter";
 //import { Map } from "./actors/Map";
 //import { Pacman } from "./actors/Pacman";
 import { Objets, createCircuit } from "./state/Objets";
-import { MAP_A, MAP_B } from "./utils/keyboardMap";
+import { MAP_A} from "./utils/keyboardMap";
 
 window.onload = () => {
 	var canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -15,7 +15,7 @@ window.onload = () => {
 
 	let fps = new FPSViewer({ x: 5, y: 15 });
 	//let laps = new LapCounter({ x: 100, y: 15 });
-	let chrono = new Chronometer({ x: 200, y: 15 });
+	//let chrono = new Chronometer({ x: 200, y: 15 });
 
 	let snake = new Snake({ x: 100, y: 100 }, MAP_A);
 	//let carB = new Car({ x: 300, y: 300 }, MAP_B);
@@ -23,12 +23,13 @@ window.onload = () => {
 
 	createCircuit(snake);
 
-	let actors: Array<IActor> = [fps, chrono, Objets, snake, ...Objets.barriers];
+	let actors: Array<IActor> = [fps, Objets, snake, ...Objets.feeds];
 
 	let lastFrame = 0;
 	const render = (time: number) => {
+		actors = [fps, Objets, snake, ...Objets.feeds];
 		let delta = (time - lastFrame) / 1000;
-
+		console.log(actors.length)
 		lastFrame = time;
 		actors.forEach((e) => e.update(delta));
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
