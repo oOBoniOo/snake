@@ -23,11 +23,11 @@ window.onload = () => {
 
 	createCircuit(snake);
 
-	let actors: Array<IActor> = [fps, Objets, snake, ...Objets.feeds];
+	let actors: Array<IActor> = [fps, Objets, snake, ...Objets.feeds,...Objets.obstacles];
 
 	let lastFrame = 0;
 	const render = (time: number) => {
-		actors = [fps, Objets, snake, ...Objets.feeds];
+		actors = [fps, Objets, snake, ...Objets.feeds,...Objets.obstacles];
 		let delta = (time - lastFrame) / 1000;
 		console.log(actors.length)
 		lastFrame = time;

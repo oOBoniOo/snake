@@ -52,12 +52,12 @@ export class Feed extends Actor {
 
 		ctx.translate(this.position.x, this.position.y);
 		// ctx.rotate(angleToRad(this.angle));
-		this.touched ? (ctx.strokeStyle = "green") : (ctx.strokeStyle = "red");
+		// this.touched ? (ctx.strokeStyle = "green") : (ctx.strokeStyle = "red");
 		// Pintamos una línea
-		ctx.lineWidth = 1;
+		// ctx.lineWidth = 1;
 		ctx.beginPath();
-		ctx.moveTo(-this.feedWith / 2, 0);
-		ctx.lineTo(this.feedWith / 2, 0);
+		ctx.moveTo(this.feedWith / 2, 0);
+		//ctx.lineTo(this.feedWith / 2, 0);
 		ctx.arc(0, 0, this.feedWith, 0, angleToRad(360));
 		ctx.closePath();
 		ctx.stroke();

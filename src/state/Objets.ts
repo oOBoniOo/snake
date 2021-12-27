@@ -2,10 +2,12 @@ import _ from "lodash";
 import { IActor } from "../actors/Actor";
 import { Feed } from "../actors/Feed";
 import { angleToRad } from "../utils/angleToRad";
+import { Obstacle } from "../actors/Obstacle";
 
 
 class ObjetsManager {
 	feeds: Feed[];
+	obstacles: Obstacle[];
 	maxFeed: number;
 	feedInterval:number = 0;
 	//chrono: number
@@ -14,7 +16,8 @@ class ObjetsManager {
 		this.feedInterval = 10;
 		//this.chrono = 0;
 		let feeds: Feed[] = [];
-		let num = 2;
+		let obstacles: Obstacle[] = [];
+		let num = 5;
 		for (let i = 0; i < num; i++) {
 			feeds.push(
 				new Feed(
@@ -27,31 +30,49 @@ class ObjetsManager {
 
 				),
 			);
+			obstacles.push(
+				new Obstacle(
+					{
+						x: _.random(100, 924),
+						y: _.random(100, 924),
+					},
+					{
+						w: _.random(100, 500),
+						h: 40,
+					},
+					actor,
+					_.sample([0, 90, 180, 270])
+				),
+			);
+			
 		}
+
+		
 		console.log("CIRCUIT CREATED");
 		this.feeds = feeds;
+		this.obstacles = obstacles;
 	}
 	update(delta: number) {
 		//this.chrono += delta
 		this.feeds = this.feeds.filter((el) => !el.touched)
-
+		this.gameOver();
 	}
 
 	
-	// addLap() {
+	gameOver() {
 	// 	console.log("LAP");
 	// 	//this.currentLap++;
 	// 	this.currentBarrier = 0;
-	// 	this.barriers.forEach((b) => (b.touched = false));
-
-	// 	if (this.currentLap >= 1) {
-	// 		alert(`YOU WON! Your score ${this.getChrono()}`);
-	// 	}
-	// }
+	 	let choques = this.obstacles.filter((b) => (b.crashed == true));
+		console.log('obstaculos : ', choques)
+	 	if (choques.length > 0) {
+				alert(`YOU LOOSE! Your score `);
+				
+	 	}
+	 }
 
 	// getChrono() {
 	// 	return `${this.chrono.toFixed(1)} segundos`
-	// }
 
 	draw() { }
 	// touchingBarrier(idx: number) {

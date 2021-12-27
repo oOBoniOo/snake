@@ -1,11 +1,11 @@
 import { Actor, IActor } from "./Actor";
 import { Point } from "../types/Point";
+import { Size } from "../types/Size";
 import { angleToRad } from "../utils/angleToRad";
 import { checkLimits } from "../utils/checkLimits";
 import { snakeKey, KeyboardMap } from "../utils/keyboardMap";
 const ferrariImg = require("../assets/ferrari.png");
 
-type Size = { w: number; h: number };
 
 export class Snake extends Actor implements IActor {
 	snakeSize: Size;
