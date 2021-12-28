@@ -41,7 +41,7 @@ class ObjetsManager {
 						h: 40,
 					},
 					actor,
-					_.sample([0, 90, 180, 270])
+					270//_.sample([0])
 				),
 			);
 			
@@ -61,8 +61,7 @@ class ObjetsManager {
 	
 	gameOver() {
 	// 	console.log("LAP");
-	// 	//this.currentLap++;
-	// 	this.currentBarrier = 0;
+
 	 	let choques = this.obstacles.filter((b) => (b.crashed == true));
 		console.log('obstaculos : ', choques)
 	 	if (choques.length > 0) {
@@ -89,6 +88,6 @@ class ObjetsManager {
 
 export let Objets: ObjetsManager;
 
-export const createCircuit = (actor: IActor) => {
+export const createObjets = (actor: IActor) => {
 	Objets = new ObjetsManager(actor);
 };

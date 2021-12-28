@@ -51,14 +51,35 @@ export class Feed extends Actor {
 		// Trasladamos y toamos el canvas según la barrera que vayamos a pintar
 
 		ctx.translate(this.position.x, this.position.y);
-		// ctx.rotate(angleToRad(this.angle));
+		//ctx.rotate(angleToRad(this.angle));
 		// this.touched ? (ctx.strokeStyle = "green") : (ctx.strokeStyle = "red");
 		// Pintamos una línea
 		// ctx.lineWidth = 1;
-		ctx.beginPath();
-		ctx.moveTo(this.feedWith / 2, 0);
-		//ctx.lineTo(this.feedWith / 2, 0);
-		ctx.arc(0, 0, this.feedWith, 0, angleToRad(360));
+		// ctx.beginPath();
+		// ctx.moveTo(this.feedWith / 2, 0);
+		// //ctx.lineTo(this.feedWith / 2, 0);
+		// ctx.arc(0, 0, this.feedWith, 0, angleToRad(360));
+
+		ctx.fillStyle = "#d31062";
+					ctx.lineWidth = 6;
+					var X = 0;
+					var Y = 0;
+					var R = 20;
+																	
+					var L = 9;
+					var paso = 2	
+																
+					var estrella= L / paso
+					var rad = (2*Math.PI) / estrella;
+																	
+					ctx.beginPath();
+							for( var i = 0; i < L; i++ ){
+							let x = X + R * Math.cos( rad*i );
+							let y = Y + R * Math.sin( rad*i );
+							ctx.lineTo(x, y);
+							}
+
+
 		ctx.closePath();
 		ctx.stroke();
 		ctx.fill();

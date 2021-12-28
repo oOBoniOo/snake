@@ -11,36 +11,24 @@ export class Snake extends Actor implements IActor {
 	snakeSize: Size;
 	snakeColor: string;
 	angle: number;
-	// angleSpeed: number;
 	snakeSpeed: number;
-	// snakeAcceleration: number;
 	image: HTMLImageElement;
 	keyboardMap: KeyboardMap;
 	constructor(
 		initialPos: Point,
 		keyboardMap: KeyboardMap,
-		size: Size = { w: 50, h: 50 },
+		size: Size = { w: 35, h: 35 },
 	) {
 		super(initialPos);
 		this.keyboardMap = keyboardMap;
 		this.snakeSize = size;
-		this.snakeColor = "red";
+		this.snakeColor = "#000000";
 		this.angle = 0;
-		// this.angleSpeed = 0;
 		this.snakeSpeed = 3;
-		// this.snakeAcceleration = 0;
-
-		// snake image
 		this.image = new Image();
 		this.image.src = ferrariImg;
 	}
 	update(delta: number) {
-		// (this.angle >= 360) ? 0 : this.angle;
-		// this.angle += this.angleSpeed;
-		// this.angleSpeed *= 0.1;
-		// Establecemos una velocidad en relación a la aceleración
-		//this.snakeSpeed = this.snakeSpeed * 0.9 + this.snakeAcceleration;
-		// console.log(this.snakeSpeed);
 		let newPos: Point = {
 			x: this.position.x + Math.cos(angleToRad(this.angle)) * this.snakeSpeed,
 			y: this.position.y + Math.sin(angleToRad(this.angle)) * this.snakeSpeed,
@@ -54,7 +42,7 @@ export class Snake extends Actor implements IActor {
 		ctx.fillStyle = this.snakeColor;
 		ctx.translate(this.position.x, this.position.y);
 		ctx.rotate(angleToRad(this.angle));
-		ctx.rotate(angleToRad(180));
+		//ctx.rotate(angleToRad(180));
 		ctx.fillRect(
 			-this.snakeSize.h / 2,
 			-this.snakeSize.w / 2,
@@ -83,12 +71,5 @@ export class Snake extends Actor implements IActor {
 			(this.angle == 0) ? this.angle = 90 : true;
 		}
 	}
-	// keyboard_event_up(key: string) {
-	// 	let tecla = this.keyboardMap[key];
-	// 	if (tecla == snakekey.UP) {
-	// 		this.snakeAcceleration = 0;
-	// 	} else if (tecla == snakekey.DOWN) {
-	// 		this.snakeAcceleration = 0;
-	// 	}
-	// }
+
 }

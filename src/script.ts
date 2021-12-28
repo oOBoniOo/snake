@@ -1,27 +1,26 @@
 import { Actor, IActor } from "./actors/Actor";
 import { Feed } from "./actors/Feed";
 import { Snake } from "./actors/Snake";
-//import { Chronometer } from "./actors/Chronometer";
 import { FPSViewer } from "./actors/FPSViewer";
+import { Objets, createObjets } from "./state/Objets";
+import { MAP_A} from "./utils/keyboardMap";
+//import { Chronometer } from "./actors/Chronometer";
 //import { LapCounter } from "./actors/LapCounter";
 //import { Map } from "./actors/Map";
-//import { Pacman } from "./actors/Pacman";
-import { Objets, createCircuit } from "./state/Objets";
-import { MAP_A} from "./utils/keyboardMap";
+
+
 
 window.onload = () => {
 	var canvas = document.getElementById("canvas") as HTMLCanvasElement;
 	var ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-	let fps = new FPSViewer({ x: 5, y: 15 });
+	let fps = new FPSViewer({ x: 15, y: 35 });
 	//let laps = new LapCounter({ x: 100, y: 15 });
 	//let chrono = new Chronometer({ x: 200, y: 15 });
 
 	let snake = new Snake({ x: 100, y: 100 }, MAP_A);
-	//let carB = new Car({ x: 300, y: 300 }, MAP_B);
 
-
-	createCircuit(snake);
+	createObjets(snake);
 
 	let actors: Array<IActor> = [fps, Objets, snake, ...Objets.feeds,...Objets.obstacles];
 
@@ -44,19 +43,17 @@ window.onload = () => {
 	window.requestAnimationFrame(render);
 
 	document.body.addEventListener("keydown", (e) => {
-		// console.log(e.key);
 		actors.forEach((actor) => {
 			if (actor.keyboard_event_down) {
 				actor.keyboard_event_down(e.key);
 			}
 		});
 	});
-	document.body.addEventListener("keyup", (e) => {
-		// console.log(e.key);
-		actors.forEach((actor) => {
-			if (actor.keyboard_event_up) {
-				actor.keyboard_event_up(e.key);
-			}
-		});
-	});
+	// document.body.addEventListener("keyup", (e) => {
+	// 	actors.forEach((actor) => {
+	// 		if (actor.keyboard_event_up) {
+	// 			actor.keyboard_event_up(e.key);
+	// 		}
+	// 	});
+	// });
 };
