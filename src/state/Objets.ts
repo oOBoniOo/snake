@@ -43,7 +43,7 @@ class ObjetsManager {
             h: 1,
           },
           actor,
-          0 //_.sample([0, 90, 180, 270])
+          _.sample([0, 90, 180, 270])
         )
       );
     }

@@ -22,13 +22,13 @@ const coords = (
     return { xinicial: x, xfinal: x + w, yinicial: y, yfinal: y };
   }
   if (angle == 90) {
-    return { xinicial: x - h, xfinal: x + h, yinicial: y, yfinal: y + w };
+    return { xinicial: x, xfinal: x, yinicial: y, yfinal: y + w };
   }
   if (angle == 180) {
-    return { xinicial: x, xfinal: x - w, yinicial: y - h, yfinal: y };
+    return { xinicial: x, xfinal: x - w, yinicial: y, yfinal: y };
   }
   if (angle == 270) {
-    return { xinicial: x, xfinal: x + h, yinicial: y, yfinal: y - w };
+    return { xinicial: x, xfinal: x, yinicial: y, yfinal: y - w };
   }
 };
 
@@ -43,7 +43,7 @@ export class Obstacle extends Actor {
   snake: IActor;
   crashed: boolean;
   angle: number;
-  // coords: coorde;
+  coords: coorde;
   blockSize: number;
   //barrierindex: number;
   constructor(
@@ -51,7 +51,7 @@ export class Obstacle extends Actor {
     size: Size,
     snake: IActor,
     angle = 0,
-    blockSize = 19
+    blockSize = 20
   ) {
     super(initialPos);
     this.obstacleSize = size;
@@ -59,13 +59,13 @@ export class Obstacle extends Actor {
     this.snake = snake;
     this.crashed = false;
     this.blockSize = blockSize;
-    // this.coords = coords(
-    //   this.position.x,
-    //   this.position.y,
-    //   this.obstacleSize.w,
-    //   this.obstacleSize.h,
-    //   this.angle
-    // );
+    this.coords = coords(
+      this.position.x,
+      this.position.y,
+      this.obstacleSize.w,
+      this.obstacleSize.h,
+      this.angle
+    );
 
     // console.log(
     //   "COORDENADS DE OBSTACULO:::: ",
@@ -83,7 +83,7 @@ export class Obstacle extends Actor {
     // let yDistnace = Math.abs(myPos.y - snakePos.y);
 
     if (
-      between(snakePos.x, this.position.x, this.coords.xfinal) &&
+      between(snakePos.x, this.coords.xinicial, this.coords.xfinal) &&
       between(snakePos.y, this.coords.yinicial, this.coords.yfinal)
     ) {
       this.crashed = true;
@@ -110,19 +110,53 @@ export class Obstacle extends Actor {
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = "#006aad";
-    ctx.translate(
-      this.position.x * this.blockSize,
-      this.position.y * this.blockSize
-    );
-    ctx.beginPath();
+    // ctx.translate(
+    //   this.position.x * this.blockSize,
+    //   this.position.y * this.blockSize
+    // );
+    // ctx.beginPath();
     //ctx.moveTo(this.obstacleSize.w / 2, 0);
-    ctx.rotate(angleToRad(this.angle));
+    //ctx.rotate(angleToRad(this.angle));
     //ctx.rotate(angleToRad(180)));
-    ctx.fillRect(
-      -this.blockSize,
-      -this.blockSize,
-      this.obstacleSize.w * this.blockSize,
-      this.obstacleSize.h * this.blockSize
-    );
+    console.log(this.angle);
+    if (this.angle == 0) {
+      console.log("0");
+      ctx.fillRect(
+        (this.coords.xinicial - 1) * this.blockSize,
+        (this.coords.yinicial - 1) * this.blockSize,
+        this.obstacleSize.w * this.blockSize,
+        this.obstacleSize.h * this.blockSize
+      );
+    }
+
+    if (this.angle == 90) {
+      console.log("90");
+      ctx.fillRect(
+        (this.coords.xinicial - 1) * this.blockSize,
+        (this.coords.yinicial - 1) * this.blockSize,
+        this.obstacleSize.h * this.blockSize,
+        (this.obstacleSize.w + 1) * this.blockSize
+      );
+    }
+
+    if (this.angle == 180) {
+      console.log("180");
+      ctx.fillRect(
+        this.coords.xinicial * this.blockSize,
+        (this.coords.yinicial - 1) * this.blockSize,
+        -(this.obstacleSize.w + 1) * this.blockSize,
+        this.obstacleSize.h * this.blockSize
+      );
+    }
+
+    if (this.angle == 270) {
+      console.log("270");
+      ctx.fillRect(
+        (this.coords.xinicial - 1) * this.blockSize,
+        this.coords.yinicial * this.blockSize,
+        this.obstacleSize.h * this.blockSize,
+        -(this.obstacleSize.w + 1) * this.blockSize
+      );
+    }
   }
 }

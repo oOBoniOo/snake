@@ -27,6 +27,10 @@ export class Feed extends Actor {
     let xDistance = Math.abs(myPos.x - snakePos.x);
     let yDistnace = Math.abs(myPos.y - snakePos.y);
 
+    if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
+      console.log("TOCADO");
+      this.touched = true;
+    }
     // console.log(Circuit.currentBarrier, this.barrierindex);
     // if (snakeAngle == 90 || snakeAngle == 270) {
     //   if (xDistance < Math.abs(30) && yDistnace < 2) {
@@ -48,10 +52,10 @@ export class Feed extends Actor {
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     // Trasladamos y toamos el canvas según la barrera que vayamos a pintar
 
-    ctx.translate(
-      this.position.x * this.blockSize,
-      this.position.y * this.blockSize
-    );
+    // ctx.translate(
+    //   this.position.x * this.blockSize,
+    //   this.position.y * this.blockSize
+    // );
     //ctx.rotate(angleToRad(this.angle));
     // this.touched ? (ctx.strokeStyle = "green") : (ctx.strokeStyle = "red");
     // Pintamos una línea
@@ -63,25 +67,11 @@ export class Feed extends Actor {
 
     ctx.fillStyle = "#d31062";
     ctx.lineWidth = 1;
-    var X = -this.blockSize;
-    var Y = -this.blockSize;
-    var R = 10;
-
-    var L = 9;
-    var paso = 2;
-
-    var estrella = L / paso;
-    var rad = (2 * Math.PI) / estrella;
-
-    ctx.beginPath();
-    for (var i = 0; i < L; i++) {
-      let x = X + R * Math.cos(rad * i);
-      let y = Y + R * Math.sin(rad * i);
-      ctx.lineTo(x, y);
-    }
-
-    ctx.closePath();
-    ctx.stroke();
-    ctx.fill();
+    ctx.fillRect(
+      (this.position.x - 1) * this.blockSize,
+      (this.position.y - 1) * this.blockSize,
+      this.blockSize,
+      this.blockSize
+    );
   }
 }

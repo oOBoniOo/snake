@@ -60,13 +60,13 @@ export class Snake extends Actor implements IActor {
     }
 
     ctx.fillStyle = this.snakeColor;
-    ctx.translate(
-      this.position.x * this.blockSize,
-      this.position.y * this.blockSize
-    );
+    // ctx.translate(
+    //   this.position.x * this.blockSize,
+    //   this.position.y * this.blockSize
+    // );
     ctx.fillRect(
-      -this.snakeSize.h / 2,
-      -this.snakeSize.w / 2,
+      (this.position.x - 1) * this.blockSize,
+      (this.position.y - 1) * this.blockSize,
       this.snakeSize.h,
       this.snakeSize.w
     );

@@ -48,7 +48,7 @@ window.onload = () => {
   const numBlocks: number = 25;
   let blockSize: number = canvas.width / numBlocks;
 
-  let fps = new FPSViewer({ x: 15, y: 35 });
+  let fps = new FPSViewer({ x: 15, y: 15 });
   //let laps = new LapCounter({ x: 100, y: 15 });
   //let chrono = new Chronometer({ x: 200, y: 15 });
 
