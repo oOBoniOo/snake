@@ -38,6 +38,9 @@ export class Snake extends Actor implements IActor {
     // this.image = new Image();
     // this.image.src = ferrariImg;
   }
+  updateLenght(): void {
+    this.snakeLenght += 1;
+  }
   update(delta: number) {
     let newPos: Point = {
       x: this.position.x + this.xSpeed,
@@ -60,6 +63,7 @@ export class Snake extends Actor implements IActor {
     }
 
     ctx.fillStyle = this.snakeColor;
+
     // ctx.translate(
     //   this.position.x * this.blockSize,
     //   this.position.y * this.blockSize

@@ -1,9 +1,11 @@
 import { Actor, IActor } from "./actors/Actor";
-import { Feed } from "./actors/Feed";
+
 import { Snake } from "./actors/Snake";
 import { FPSViewer } from "./actors/FPSViewer";
 import { Objets, createObjets } from "./state/Objets";
 import { MAP_A } from "./utils/keyboardMap";
+import { Map } from "./actors/Map";
+// import { Feed } from "./actors/Feed";
 //import { Chronometer } from "./actors/Chronometer";
 //import { LapCounter } from "./actors/LapCounter";
 //import { Map } from "./actors/Map";

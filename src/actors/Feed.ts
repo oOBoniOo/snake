@@ -2,16 +2,17 @@ import { Objets } from "../state/Objets";
 import { Point } from "../types/Point";
 import { angleToRad } from "../utils/angleToRad";
 import { Actor, IActor } from "./Actor";
+import { Snake } from "./Snake";
 
 export class Feed extends Actor {
   blockSize: number;
-  snake: IActor;
+  snake: Snake;
   touched: boolean;
   //barrierindex: number;
   constructor(
     initialPos: Point,
     bw = 20,
-    snake: IActor
+    snake: Snake
     //barrierindex: number,
   ) {
     super(initialPos);
@@ -30,6 +31,7 @@ export class Feed extends Actor {
     if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
       console.log("TOCADO");
       this.touched = true;
+      this.snake.updateLenght();
     }
     // console.log(Circuit.currentBarrier, this.barrierindex);
     // if (snakeAngle == 90 || snakeAngle == 270) {

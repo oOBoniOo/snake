@@ -4,6 +4,8 @@ import { Point } from "../types/Point";
 import { angleToRad } from "../utils/angleToRad";
 import { Actor, IActor } from "./Actor";
 import { Size } from "../types/Size";
+import { Snake } from "./Snake";
+
 type coorde = {
   xinicial: number;
   xfinal: number;
@@ -17,7 +19,7 @@ const coords = (
   w: number,
   h: number,
   angle: number = 0
-) => {
+): coorde => {
   if (angle == 0) {
     return { xinicial: x, xfinal: x + w, yinicial: y, yfinal: y };
   }
@@ -40,7 +42,7 @@ const between = (x: number, a: number, b: number) => {
 
 export class Obstacle extends Actor {
   obstacleSize: Size;
-  snake: IActor;
+  snake: Snake;
   crashed: boolean;
   angle: number;
   coords: coorde;
@@ -49,7 +51,7 @@ export class Obstacle extends Actor {
   constructor(
     initialPos: Point,
     size: Size,
-    snake: IActor,
+    snake: Snake,
     angle = 0,
     blockSize = 20
   ) {
@@ -76,9 +78,9 @@ export class Obstacle extends Actor {
     //this.barrierindex = barrierindex;
   }
   update() {
-    let snakeAngle = this.snake.angle;
+    // let snakeAngle = this.snake.angle;
     let snakePos: Point = this.snake.position;
-    let myPos = this.position;
+    // let myPos = this.position;
     // let xDistance = Math.abs(myPos.x - snakePos.x);
     // let yDistnace = Math.abs(myPos.y - snakePos.y);
 

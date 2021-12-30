@@ -1,22 +1,25 @@
 import _ from "lodash";
 import { IActor } from "../actors/Actor";
 import { Feed } from "../actors/Feed";
-import { angleToRad } from "../utils/angleToRad";
+// import { angleToRad } from "../utils/angleToRad";
 import { Obstacle } from "../actors/Obstacle";
+import { Snake } from "../actors/Snake";
 
 class ObjetsManager {
   feeds: Feed[];
   obstacles: Obstacle[];
   maxFeed: number;
   feedInterval: number;
+  snake: Snake;
   numBlocks: number;
   blockSize: number;
   //chrono: number
-  constructor(actor: IActor, numBlocks: number, blockSize: number) {
+  constructor(actor: Snake, numBlocks: number, blockSize: number) {
     this.maxFeed = 1;
     this.feedInterval = 10;
     this.numBlocks = numBlocks;
     this.blockSize = blockSize;
+    this.snake = actor;
     //this.chrono = 0;
     let feeds: Feed[] = [];
     let obstacles: Obstacle[] = [];
@@ -55,6 +58,19 @@ class ObjetsManager {
   update(delta: number) {
     //this.chrono += delta
     this.feeds = this.feeds.filter((el) => !el.touched);
+    if (this.feeds.length < 5) {
+      this.feeds.push(
+        new Feed(
+          {
+            x: _.random(1, this.numBlocks),
+            y: _.random(1, this.numBlocks),
+          },
+          20,
+          this.snake
+        )
+      );
+    }
+
     this.gameOver();
   }
 
