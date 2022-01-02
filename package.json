@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel index.html",
-    "build": "tsc"
+    "build": "yarn run clean && yarn run ghbuild",
+    "ghbuild": "parcel build --dist-dir docs --public-url /dungeon index.html",
+    "clean": "rimraf docs dist"
   },
   "keywords": [],
   "author": "",
