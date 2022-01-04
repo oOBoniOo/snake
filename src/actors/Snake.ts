@@ -4,7 +4,7 @@ import { Size } from "../types/Size";
 import { checkLimits } from "../utils/checkLimits";
 import { snakeKey, KeyboardMap } from "../utils/keyboardMap";
 import { BodyPart } from "./BodyPart";
-
+const sprite = require("../assets/sprites/snake_64.png");
 export class Snake extends Actor implements IActor {
   snakeSize: Size;
   snakeColor: string;
@@ -14,7 +14,7 @@ export class Snake extends Actor implements IActor {
   ySpeed: number;
   blockSize: number;
   numBlocks: number;
-
+  image: HTMLImageElement;
   keyboardMap: KeyboardMap;
   constructor(
     initialPos: Point, //el atributo position sera la cabeza
@@ -34,9 +34,8 @@ export class Snake extends Actor implements IActor {
     this.numBlocks = numBlocks;
     this.blockSize = blockSize;
 
-    // this.snakeSpeed = 32;
-    // this.image = new Image();
-    // this.image.src = ferrariImg;
+    this.image = new Image();
+    this.image.src = sprite;
   }
   updateLenght(): void {
     this.snakeLenght += 1;
@@ -50,48 +49,51 @@ export class Snake extends Actor implements IActor {
       this.position = newPos;
     }
     //añadimos partes.
-  }
-  draw(delta: number, ctx: CanvasRenderingContext2D) {
-    // for (let i = 0; i < this.snakeBody.length; i++) {
-    //   let part = this.snakeBody[i];
-    //   part.draw(delta, ctx);
-    // }
     let cabeza = new BodyPart(this.position, this.blockSize);
     this.snakeBody.push(cabeza);
     while (this.snakeBody.length > this.snakeLenght) {
       this.snakeBody.shift();
     }
+  }
+  draw(delta: number, ctx: CanvasRenderingContext2D) {
+    let tx = 0;
+    let ty = 0;
+    if (this.xSpeed == 1) {
+      tx = 4;
+      ty = 0;
+    }
+    if (this.xSpeed == -1) {
+      tx = 3;
+      ty = 1;
+    }
+    if (this.ySpeed == 1) {
+      tx = 4;
+      ty = 1;
+    }
+    if (this.ySpeed == -1) {
+      tx = 3;
+      ty = 0;
+    }
 
-    ctx.fillStyle = this.snakeColor;
-
-    // ctx.translate(
-    //   this.position.x * this.blockSize,
-    //   this.position.y * this.blockSize
-    // );
-    ctx.fillRect(
+    ctx.drawImage(
+      this.image,
+      tx * 64,
+      ty * 64,
+      64,
+      64,
       (this.position.x - 1) * this.blockSize,
       (this.position.y - 1) * this.blockSize,
-      this.snakeSize.h,
-      this.snakeSize.w
+      this.blockSize,
+      this.blockSize
     );
+    // ctx.fillStyle = this.snakeColor;
+    // ctx.fillRect(
+    //   (this.position.x - 1) * this.blockSize,
+    //   (this.position.y - 1) * this.blockSize,
+    //   this.snakeSize.h,
+    //   this.snakeSize.w
+    // );
   }
-  // 	draw(delta: number, ctx: CanvasRenderingContext2D) {
-  // 		ctx.fillStyle = "green";
-  // 		for (let i = 0; i < this.snakeBody.length; i++) {
-  // 			let part = this.snakeBody[i];
-  // 			ctx.translate(part.x * this.numBlocks, part.y * this.numBlocks);
-  // 			ctx.fillRect(-this.blockSize/2, -this.blockSize/2, this.blockSize, this.blockSize);
-  // 		}
-  // 		let cabeza:Point={x:this.position.x, y:this.position.y}
-  // 		this.snakeBody.push(cabeza);
-  // 		while (this.snakeBody.length > this.snakeLenght) {
-  // 			this.snakeBody.shift();
-  // 		}
-
-  // 		ctx.fillStyle = "orange";
-  // 		ctx.translate(this.position.x * this.numBlocks, this.position.y * this.numBlocks);
-  // 		ctx.fillRect(-this.blockSize/2, -this.blockSize/2, this.blockSize, this.blockSize);
-  // }
 
   keyboard_event_down(key: string) {
     let tecla = this.keyboardMap[key];

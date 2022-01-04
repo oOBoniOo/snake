@@ -40,15 +40,8 @@ window.onload = () => {
 
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
-    if (counter > 7) {
-      actors = [
-        fps,
-        Objets,
-        snake,
-        ...Objets.feeds,
-        ...Objets.obstacles,
-        ...snake.snakeBody,
-      ];
+    if (counter > 6) {
+      actors = [fps, Objets, snake, ...Objets.feeds, ...Objets.obstacles, ...snake.snakeBody];
       counter = 0;
       actors.forEach((e) => e.update(delta));
       ctx.clearRect(0, 0, canvas.width, canvas.height);

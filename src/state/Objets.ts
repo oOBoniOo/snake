@@ -56,7 +56,7 @@ class ObjetsManager {
   update(delta: number) {
     //this.chrono += delta
     this.feeds = this.feeds.filter((el) => !el.touched);
-    if (this.feeds.length < 1) {
+    if (this.feeds.length < 10) {
       this.feeds.push(
         new Feed(
           {
@@ -100,11 +100,6 @@ class ObjetsManager {
 
 export let Objets: ObjetsManager;
 
-export const createObjets = (
-  snake: Snake,
-  numBlocks: number,
-  blockSize: number,
-  mapa: Map
-) => {
+export const createObjets = (snake: Snake, numBlocks: number, blockSize: number, mapa: Map) => {
   Objets = new ObjetsManager(snake, numBlocks, blockSize, mapa);
 };

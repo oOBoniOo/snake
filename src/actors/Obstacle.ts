@@ -6,13 +6,7 @@ import { Size } from "../types/Size";
 import { Snake } from "./Snake";
 import { coorde } from "../types/Coords";
 
-const coords = (
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  angle: number = 0
-): coorde => {
+const coords = (x: number, y: number, w: number, h: number, angle: number = 0): coorde => {
   let aux = 0;
   if (angle == 0) {
     if (x + w > 25) {
@@ -47,14 +41,7 @@ export class Obstacle extends Actor {
   blockSize: number;
   map: Map;
   //barrierindex: number;
-  constructor(
-    initialPos: Point,
-    size: Size,
-    snake: Snake,
-    angle = 0,
-    blockSize = 20,
-    map: Map
-  ) {
+  constructor(initialPos: Point, size: Size, snake: Snake, angle = 0, blockSize = 20, map: Map) {
     super(initialPos);
     this.obstacleSize = size;
     this.angle = angle;
@@ -69,7 +56,7 @@ export class Obstacle extends Actor {
       this.angle
     );
     this.map = map;
-    this.map.updateMap(this.coords, this.angle);
+    this.map.updateMap(this.coords);
   }
   update() {
     let snakePos: Point = this.snake.position;
@@ -92,7 +79,7 @@ export class Obstacle extends Actor {
       ctx.fillRect(
         (this.coords.xinicial - 1) * this.blockSize,
         (this.coords.yinicial - 1) * this.blockSize,
-        this.obstacleSize.w * this.blockSize,
+        (this.obstacleSize.w + 1) * this.blockSize,
         this.obstacleSize.h * this.blockSize
       );
     }
