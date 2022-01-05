@@ -30,20 +30,20 @@ export class Feed extends Actor {
     }
   }
   draw(delta: number, ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#d31062";
-    ctx.lineWidth = 1;
-    ctx.fillRect(
-      (this.position.x - 1) * this.blockSize,
-      (this.position.y - 1) * this.blockSize,
-      this.blockSize,
-      this.blockSize
-    );
+    // ctx.fillStyle = "#d31062";
+    // ctx.lineWidth = 1;
+    // ctx.fillRect(
+    //   (this.position.x - 1) * this.blockSize,
+    //   (this.position.y - 1) * this.blockSize,
+    //   this.blockSize,
+    //   this.blockSize
+    // );
     ctx.drawImage(
       this.image,
       0 * 64,
-      4 * 64,
-      32,
-      32,
+      3 * 64,
+      64,
+      64,
       (this.position.x - 1) * this.blockSize,
       (this.position.y - 1) * this.blockSize,
       this.blockSize,

@@ -32,7 +32,7 @@ export class Snake extends Actor implements IActor {
     this.xSpeed = 1;
     this.ySpeed = 0;
     this.snakeBody = [];
-    this.snakeLenght = 1;
+    this.snakeLenght = 2;
     this.numBlocks = numBlocks;
     this.blockSize = blockSize;
 
@@ -108,13 +108,57 @@ export class Snake extends Actor implements IActor {
       this.blockSize,
       this.blockSize
     );
-    // ctx.fillStyle = this.snakeColor;
-    // ctx.fillRect(
-    //   (this.position.x - 1) * this.blockSize,
-    //   (this.position.y - 1) * this.blockSize,
-    //   this.snakeSize.h,
-    //   this.snakeSize.w
-    // );
+    this.snakeBody.map((el, index) => {
+      if (index != this.snakeBody.length - 1) {
+        if (index == 0) {
+          //pintamos la cola.
+          if (this.snakeBody[index + 1].position.x > el.position.x) {
+            tx = 4;
+            ty = 2;
+          }
+          if (this.snakeBody[index + 1].position.x < el.position.x) {
+            tx = 3;
+            ty = 3;
+          }
+          if (this.snakeBody[index + 1].position.y > el.position.y) {
+            tx = 4;
+            ty = 3;
+          }
+          if (this.snakeBody[index + 1].position.y < el.position.y) {
+            tx = 3;
+            ty = 2;
+          }
+          ctx.drawImage(
+            this.image,
+            tx * 64,
+            ty * 64,
+            64,
+            64,
+            (el.position.x - 1) * this.blockSize,
+            (el.position.y - 1) * this.blockSize,
+            this.blockSize,
+            this.blockSize
+          );
+        } else {
+          if ((this.snakeBody[index + 1].position.y = el.position.y)) {
+            tx = 1;
+            ty = 0;
+          }
+          if ((this.snakeBody[index + 1].position.x = el.position.x)) {
+            tx = 2;
+            ty = 1;
+          }
+          if (this.snakeBody[index + 1].position.y > el.position.y) {
+            tx = 4;
+            ty = 3;
+          }
+          if (this.snakeBody[index + 1].position.y < el.position.y) {
+            tx = 3;
+            ty = 2;
+          }
+        }
+      }
+    });
   }
 
   keyboard_event_down(key: string) {

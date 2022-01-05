@@ -20,16 +20,16 @@ export class BodyPart extends Actor {
   update() {}
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = this.bodyColor;
-    // ctx.translate(this.position.x * this.size, this.position.y * this.size);
-    //ctx.beginPath();
-    ctx.lineWidth = 1;
-    ctx.fillRect(
-      (this.position.x - 1) * this.size,
-      (this.position.y - 1) * this.size,
-      this.size,
-      this.size
-    );
+    // ctx.fillStyle = this.bodyColor;
+    // // ctx.translate(this.position.x * this.size, this.position.y * this.size);
+    // //ctx.beginPath();
+    // ctx.lineWidth = 1;
+    // ctx.fillRect(
+    //   (this.position.x - 1) * this.size,
+    //   (this.position.y - 1) * this.size,
+    //   this.size,
+    //   this.size
+    // );
     //ctx.closePath();
     //ctx.stroke();
     //ctx.fill();
