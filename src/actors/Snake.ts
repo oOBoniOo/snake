@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { Actor, IActor } from "./Actor";
 import { Point } from "../types/Point";
 import { Size } from "../types/Size";
@@ -5,6 +6,7 @@ import { checkLimits } from "../utils/checkLimits";
 import { snakeKey, KeyboardMap } from "../utils/keyboardMap";
 import { BodyPart } from "./BodyPart";
 const sprite = require("../assets/sprites/snake_64.png");
+
 export class Snake extends Actor implements IActor {
   snakeSize: Size;
   snakeColor: string;
@@ -30,7 +32,7 @@ export class Snake extends Actor implements IActor {
     this.xSpeed = 1;
     this.ySpeed = 0;
     this.snakeBody = [];
-    this.snakeLenght = 2;
+    this.snakeLenght = 1;
     this.numBlocks = numBlocks;
     this.blockSize = blockSize;
 
@@ -45,14 +47,34 @@ export class Snake extends Actor implements IActor {
       x: this.position.x + this.xSpeed,
       y: this.position.y + this.ySpeed,
     };
+    console.log(newPos);
     if (checkLimits(newPos)) {
       this.position = newPos;
+    } else {
+      alert(`YOU LOOSE! Your score `);
     }
+
     //añadimos partes.
     let cabeza = new BodyPart(this.position, this.blockSize);
     this.snakeBody.push(cabeza);
     while (this.snakeBody.length > this.snakeLenght) {
       this.snakeBody.shift();
+    }
+
+    //comprobamos choque de serpiente
+    let choque = this.snakeBody.map((el, index) => {
+      if (
+        this.position.x == el.position.x &&
+        this.position.y == el.position.y &&
+        this.snakeBody.length - 1 != index
+      ) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    if (_.sum(choque) > 0) {
+      alert(`YOU LOOSE! Your score `);
     }
   }
   draw(delta: number, ctx: CanvasRenderingContext2D) {

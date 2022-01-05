@@ -6,23 +6,18 @@ export class BodyPart extends Actor {
   // nextPart: Point;
   touched: boolean;
   bodyColor: string;
-  //barrierindex: number;
   constructor(
     initialPos: Point,
     size = 20
-    // nextPart: Point
     //barrierindex: number,
   ) {
     super(initialPos);
     this.size = size;
-    // this.nextPart = nextPart;
     this.touched = false;
     this.bodyColor = "orange";
   }
 
-  update() {
-    // this.position = this.nextPart;
-  }
+  update() {}
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = this.bodyColor;
