@@ -55,7 +55,7 @@ export class Snake extends Actor implements IActor {
     }
 
     //añadimos partes.
-    let cabeza = new BodyPart(this.position, this.blockSize);
+    let cabeza = new BodyPart(this.position, this.blockSize, this.xSpeed, this.ySpeed);
     this.snakeBody.push(cabeza);
     while (this.snakeBody.length > this.snakeLenght) {
       this.snakeBody.shift();
@@ -140,22 +140,60 @@ export class Snake extends Actor implements IActor {
             this.blockSize
           );
         } else {
-          if ((this.snakeBody[index + 1].position.y = el.position.y)) {
+          if (
+            (this.snakeBody[index + 1].xSpeed == 1 && el.xSpeed == 1) ||
+            (this.snakeBody[index + 1].xSpeed == -1 && el.xSpeed == -1)
+          ) {
             tx = 1;
             ty = 0;
           }
-          if ((this.snakeBody[index + 1].position.x = el.position.x)) {
+          if (
+            (this.snakeBody[index + 1].ySpeed == 1 && el.ySpeed == 1) ||
+            (this.snakeBody[index + 1].ySpeed == -1 && el.ySpeed == -1)
+          ) {
             tx = 2;
             ty = 1;
           }
-          if (this.snakeBody[index + 1].position.y > el.position.y) {
-            tx = 4;
-            ty = 3;
+          if (
+            (el.xSpeed == 1 && this.snakeBody[index + 1].ySpeed == 1) ||
+            (el.ySpeed == -1 && this.snakeBody[index + 1].xSpeed == -1)
+          ) {
+            tx = 2;
+            ty = 0;
           }
-          if (this.snakeBody[index + 1].position.y < el.position.y) {
-            tx = 3;
+          if (
+            (el.xSpeed == 1 && this.snakeBody[index + 1].ySpeed == -1) ||
+            (el.ySpeed == 1 && this.snakeBody[index + 1].xSpeed == -1)
+          ) {
+            tx = 2;
             ty = 2;
           }
+          if (
+            (el.xSpeed == -1 && this.snakeBody[index + 1].ySpeed == 1) ||
+            (el.ySpeed == -1 && this.snakeBody[index + 1].xSpeed == 1)
+          ) {
+            tx = 0;
+            ty = 0;
+          }
+          if (
+            (el.xSpeed == -1 && this.snakeBody[index + 1].ySpeed == -1) ||
+            (el.ySpeed == 1 && this.snakeBody[index + 1].xSpeed == 1)
+          ) {
+            tx = 0;
+            ty = 1;
+          }
+
+          ctx.drawImage(
+            this.image,
+            tx * 64,
+            ty * 64,
+            64,
+            64,
+            (el.position.x - 1) * this.blockSize,
+            (el.position.y - 1) * this.blockSize,
+            this.blockSize,
+            this.blockSize
+          );
         }
       }
     });

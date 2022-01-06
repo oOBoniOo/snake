@@ -6,32 +6,18 @@ export class BodyPart extends Actor {
   // nextPart: Point;
   touched: boolean;
   bodyColor: string;
-  constructor(
-    initialPos: Point,
-    size = 20
-    //barrierindex: number,
-  ) {
+  xSpeed: number;
+  ySpeed: number;
+  constructor(initialPos: Point, size = 20, xSpeed: number, ySpeed: number) {
     super(initialPos);
     this.size = size;
     this.touched = false;
     this.bodyColor = "orange";
+    this.xSpeed = xSpeed;
+    this.ySpeed = ySpeed;
   }
 
   update() {}
 
-  draw(delta: number, ctx: CanvasRenderingContext2D) {
-    // ctx.fillStyle = this.bodyColor;
-    // // ctx.translate(this.position.x * this.size, this.position.y * this.size);
-    // //ctx.beginPath();
-    // ctx.lineWidth = 1;
-    // ctx.fillRect(
-    //   (this.position.x - 1) * this.size,
-    //   (this.position.y - 1) * this.size,
-    //   this.size,
-    //   this.size
-    // );
-    //ctx.closePath();
-    //ctx.stroke();
-    //ctx.fill();
-  }
+  draw(delta: number, ctx: CanvasRenderingContext2D) {}
 }

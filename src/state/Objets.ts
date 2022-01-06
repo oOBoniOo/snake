@@ -1,10 +1,10 @@
 import _ from "lodash";
 import { Point } from "../types/Point";
 import { Feed } from "../actors/Feed";
-// import { angleToRad } from "../utils/angleToRad";
 import { Obstacle } from "../actors/Obstacle";
 import { Snake } from "../actors/Snake";
 import { Map } from "../actors/Map";
+const wallsImg = require("../assets/sprites/walls.png");
 
 class ObjetsManager {
   feeds: Feed[];
@@ -16,6 +16,8 @@ class ObjetsManager {
   blockSize: number;
   mapa: Map;
   posicionesLibres: Point[];
+  image: HTMLImageElement;
+  points: number;
   //chrono: number
   constructor(snake: Snake, numBlocks: number, blockSize: number, mapa: Map) {
     this.maxFeed = 1;
@@ -25,6 +27,9 @@ class ObjetsManager {
     this.snake = snake;
     this.mapa = mapa;
     this.posicionesLibres = mapa.posLibres();
+    this.image = new Image();
+    this.image.src = wallsImg;
+    this.points = 0;
     //this.chrono = 0;
     let feeds: Feed[] = [];
     let obstacles: Obstacle[] = [];
@@ -49,13 +54,13 @@ class ObjetsManager {
     }
     feeds.push(new Feed(_.sample(this.posicionesLibres), 20, snake));
 
-    console.log("CIRCUIT CREATED");
     this.feeds = feeds;
     this.obstacles = obstacles;
   }
   update(delta: number) {
     //this.chrono += delta
     this.feeds = this.feeds.filter((el) => !el.touched);
+    //this.points += 10 - this.feeds.length;
     if (this.feeds.length < 10) {
       this.feeds.push(
         new Feed(
@@ -73,8 +78,6 @@ class ObjetsManager {
   }
 
   gameOver() {
-    // 	console.log("LAP");
-
     let choques = this.obstacles.filter((b) => b.crashed == true);
 
     if (choques.length > 0) {
@@ -85,17 +88,25 @@ class ObjetsManager {
   // getChrono() {
   // 	return `${this.chrono.toFixed(1)} segundos`
 
-  draw() {}
-  // touchingBarrier(idx: number) {
-  // 	if (this.currentBarrier == idx) {
-  // 		this.currentBarrier++;
-  // 		// if (this.currentBarrier == this.barriers.length) {
-  // 		// 	this.addLap();
-  // 		// }
-  // 		return true;
-  // 	}
-  // 	return false;
-  // }
+  draw(delta: number, ctx: CanvasRenderingContext2D) {
+    this.mapa.mapa.map((row, i) =>
+      row.map((el, j) => {
+        if (el == 1) {
+          ctx.drawImage(
+            this.image,
+            6 * 24,
+            1 * 24,
+            24,
+            24,
+            (i - 1) * this.blockSize,
+            (j - 1) * this.blockSize,
+            this.blockSize,
+            this.blockSize
+          );
+        }
+      })
+    );
+  }
 }
 
 export let Objets: ObjetsManager;

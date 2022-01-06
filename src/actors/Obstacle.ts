@@ -66,32 +66,8 @@ export class Obstacle extends Actor {
       between(snakePos.y, this.coords.yinicial, this.coords.yfinal)
     ) {
       this.crashed = true;
-      console.log("CHOQUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
     }
   }
 
-  draw(delta: number, ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#006aad";
-
-    console.log(this.angle);
-    if (this.angle == 0) {
-      console.log("0");
-      ctx.fillRect(
-        (this.coords.xinicial - 1) * this.blockSize,
-        (this.coords.yinicial - 1) * this.blockSize,
-        (this.obstacleSize.w + 1) * this.blockSize,
-        this.obstacleSize.h * this.blockSize
-      );
-    }
-
-    if (this.angle == 90) {
-      console.log("90");
-      ctx.fillRect(
-        (this.coords.xinicial - 1) * this.blockSize,
-        (this.coords.yinicial - 1) * this.blockSize,
-        this.obstacleSize.h * this.blockSize,
-        (this.obstacleSize.w + 1) * this.blockSize
-      );
-    }
-  }
+  draw(delta: number, ctx: CanvasRenderingContext2D) {}
 }

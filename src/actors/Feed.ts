@@ -24,20 +24,12 @@ export class Feed extends Actor {
     let myPos = this.position;
 
     if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
-      console.log("TOCADO");
       this.touched = true;
+      Objets.points += 1;
       this.snake.updateLenght();
     }
   }
   draw(delta: number, ctx: CanvasRenderingContext2D) {
-    // ctx.fillStyle = "#d31062";
-    // ctx.lineWidth = 1;
-    // ctx.fillRect(
-    //   (this.position.x - 1) * this.blockSize,
-    //   (this.position.y - 1) * this.blockSize,
-    //   this.blockSize,
-    //   this.blockSize
-    // );
     ctx.drawImage(
       this.image,
       0 * 64,
