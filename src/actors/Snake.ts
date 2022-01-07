@@ -9,7 +9,7 @@ const sprite = require("../assets/sprites/snake_64.png");
 
 export class Snake extends Actor implements IActor {
   snakeSize: Size;
-  snakeColor: string;
+  // snakeColor: string;
   snakeBody: BodyPart[];
   snakeLenght: number;
   xSpeed: number;
@@ -18,6 +18,7 @@ export class Snake extends Actor implements IActor {
   numBlocks: number;
   image: HTMLImageElement;
   keyboardMap: KeyboardMap;
+  counter: number;
   constructor(
     initialPos: Point, //el atributo position sera la cabeza
     keyboardMap: KeyboardMap,
@@ -28,55 +29,60 @@ export class Snake extends Actor implements IActor {
     super(initialPos);
     this.keyboardMap = keyboardMap;
     this.snakeSize = size;
-    this.snakeColor = "#000000";
+    // this.snakeColor = "#000000";
     this.xSpeed = 1;
     this.ySpeed = 0;
     this.snakeBody = [];
     this.snakeLenght = 2;
     this.numBlocks = numBlocks;
     this.blockSize = blockSize;
-
+    this.counter = 0;
     this.image = new Image();
     this.image.src = sprite;
   }
-  updateLenght(): void {
-    this.snakeLenght += 1;
-  }
+  // updateLenght(): void {
+  //   this.snakeLenght += 1;
+  // }
+
   update(delta: number) {
+    this.counter += 1;
     let newPos: Point = {
       x: this.position.x + this.xSpeed,
       y: this.position.y + this.ySpeed,
     };
-    console.log(newPos);
-    if (checkLimits(newPos)) {
-      this.position = newPos;
-    } else {
-      alert(`YOU LOOSE! Your score `);
-    }
 
-    //añadimos partes.
-    let cabeza = new BodyPart(this.position, this.blockSize, this.xSpeed, this.ySpeed);
-    this.snakeBody.push(cabeza);
-    while (this.snakeBody.length > this.snakeLenght) {
-      this.snakeBody.shift();
-    }
-
-    //comprobamos choque de serpiente
-    let choque = this.snakeBody.map((el, index) => {
-      if (
-        this.position.x == el.position.x &&
-        this.position.y == el.position.y &&
-        this.snakeBody.length - 1 != index
-      ) {
-        return 1;
+    if (this.counter % 6 == 0) {
+      if (checkLimits(newPos)) {
+        this.position = newPos;
       } else {
-        return 0;
+        alert(`YOU LOOSE! Your score `);
       }
-    });
-    if (_.sum(choque) > 0) {
-      alert(`YOU LOOSE! Your score `);
+
+      //añadimos partes.
+      let cabeza = new BodyPart(this.position, this.blockSize, this.xSpeed, this.ySpeed);
+      this.snakeBody.push(cabeza);
+      while (this.snakeBody.length > this.snakeLenght) {
+        this.snakeBody.shift();
+      }
+
+      //comprobamos choque de serpiente
+      let choque = this.snakeBody.map((el, index) => {
+        if (
+          this.position.x == el.position.x &&
+          this.position.y == el.position.y &&
+          this.snakeBody.length - 1 != index
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      if (_.sum(choque) > 0) {
+        alert(`YOU LOOSE! Your score `);
+      }
     }
   }
+
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     let tx = 0;
     let ty = 0;

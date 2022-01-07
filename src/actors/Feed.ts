@@ -26,7 +26,7 @@ export class Feed extends Actor {
     if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
       this.touched = true;
       Objets.points += 1;
-      this.snake.updateLenght();
+      this.snake.snakeLenght += 1;
     }
   }
   draw(delta: number, ctx: CanvasRenderingContext2D) {

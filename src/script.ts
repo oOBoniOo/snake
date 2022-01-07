@@ -36,26 +36,28 @@ window.onload = () => {
     counter += 1;
 
     let delta = (time - lastFrame) / 1000;
+    console.log("time : ", time);
+    console.log("delta: ", delta);
     lastFrame = time;
-    if (counter > 6) {
-      actors = [
-        fps,
-        pointCounter,
-        Objets,
-        snake,
-        ...Objets.feeds,
-        ...Objets.obstacles,
-        ...snake.snakeBody,
-      ];
-      counter = 0;
-      actors.forEach((e) => e.update(delta));
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      actors.forEach((e) => {
-        //ctx.save();
-        e.draw(delta, ctx);
-        //ctx.restore();
-      });
-    }
+    //if (counter > 6) {
+    actors = [
+      fps,
+      pointCounter,
+      Objets,
+      snake,
+      ...Objets.feeds,
+      ...Objets.obstacles,
+      ...snake.snakeBody,
+    ];
+    counter = 0;
+    actors.forEach((e) => e.update(delta));
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    actors.forEach((e) => {
+      //ctx.save();
+      e.draw(delta, ctx);
+      //ctx.restore();
+    });
+    //}
 
     //dibujaGrid(32,32,1,"#000000",ctx)
     window.requestAnimationFrame(render);
