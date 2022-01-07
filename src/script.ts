@@ -22,8 +22,8 @@ window.onload = () => {
 
   let actors: Array<IActor> = [
     fps,
-    Objets,
     pointCounter,
+    Objets,
     snake,
     ...Objets.feeds,
     ...Objets.obstacles,
@@ -40,8 +40,8 @@ window.onload = () => {
     if (counter > 6) {
       actors = [
         fps,
-        Objets,
         pointCounter,
+        Objets,
         snake,
         ...Objets.feeds,
         ...Objets.obstacles,

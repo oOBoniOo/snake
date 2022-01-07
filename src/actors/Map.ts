@@ -71,6 +71,7 @@ export class Map {
         }
       })
     );
+    console.log(this.mapa);
   }
 
   liberar(i: number, j: number) {

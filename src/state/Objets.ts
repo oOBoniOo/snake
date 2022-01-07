@@ -26,7 +26,8 @@ class ObjetsManager {
     this.blockSize = blockSize;
     this.snake = snake;
     this.mapa = mapa;
-    this.posicionesLibres = mapa.posLibres();
+    this.posicionesLibres = [];
+
     this.image = new Image();
     this.image.src = wallsImg;
     this.points = 0;
@@ -52,6 +53,8 @@ class ObjetsManager {
         )
       );
     }
+    this.posicionesLibres = mapa.posLibres();
+    console.log(this.posicionesLibres);
     feeds.push(new Feed(_.sample(this.posicionesLibres), 20, snake));
 
     this.feeds = feeds;
