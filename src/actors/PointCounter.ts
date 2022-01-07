@@ -59,7 +59,6 @@ export class PointCounter extends Actor {
         ty = 2;
       }
 
-      console.log(el, index, tx, ty);
       ctx.drawImage(
         this.image,
         tx * 40,

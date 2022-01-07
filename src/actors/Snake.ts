@@ -5,6 +5,7 @@ import { Size } from "../types/Size";
 import { checkLimits } from "../utils/checkLimits";
 import { snakeKey, KeyboardMap } from "../utils/keyboardMap";
 import { BodyPart } from "./BodyPart";
+import { Objets } from "../state/Objets";
 const sprite = require("../assets/sprites/snake_64.png");
 
 export class Snake extends Actor implements IActor {
@@ -55,9 +56,13 @@ export class Snake extends Actor implements IActor {
       if (checkLimits(newPos)) {
         this.position = newPos;
       } else {
-        alert(`YOU LOOSE! Your score `);
+        alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
+        location.reload();
       }
-
+      if (Objets.gameover) {
+        alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
+        location.reload();
+      }
       //añadimos partes.
       let cabeza = new BodyPart(this.position, this.blockSize, this.xSpeed, this.ySpeed);
       this.snakeBody.push(cabeza);
@@ -78,7 +83,8 @@ export class Snake extends Actor implements IActor {
         }
       });
       if (_.sum(choque) > 0) {
-        alert(`YOU LOOSE! Your score `);
+        alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
+        location.reload();
       }
     }
   }

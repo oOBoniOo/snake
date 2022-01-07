@@ -5,6 +5,7 @@ import { Obstacle } from "../actors/Obstacle";
 import { Snake } from "../actors/Snake";
 import { Map } from "../actors/Map";
 const wallsImg = require("../assets/sprites/walls.png");
+import { PointCounter } from "../actors/PointCounter";
 
 class ObjetsManager {
   feeds: Feed[];
@@ -18,6 +19,7 @@ class ObjetsManager {
   posicionesLibres: Point[];
   image: HTMLImageElement;
   points: number;
+  gameover: boolean;
   //chrono: number
   constructor(snake: Snake, numBlocks: number, blockSize: number, mapa: Map) {
     this.maxFeed = 1;
@@ -27,7 +29,7 @@ class ObjetsManager {
     this.snake = snake;
     this.mapa = mapa;
     this.posicionesLibres = [];
-
+    this.gameover = false;
     this.image = new Image();
     this.image.src = wallsImg;
     this.points = 0;
@@ -76,20 +78,13 @@ class ObjetsManager {
         )
       );
     }
-
-    this.gameOver();
-  }
-
-  gameOver() {
     let choques = this.obstacles.filter((b) => b.crashed == true);
 
     if (choques.length > 0) {
-      alert(`YOU LOOSE! Your score `);
+      this.gameover = true;
+      //alert(`GAME OVER!! Score: ${this.points}`);
     }
   }
-
-  // getChrono() {
-  // 	return `${this.chrono.toFixed(1)} segundos`
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     this.mapa.mapa.map((row, i) =>

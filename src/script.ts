@@ -34,12 +34,8 @@ window.onload = () => {
   let counter = 0;
   const render = (time: number) => {
     counter += 1;
-
     let delta = (time - lastFrame) / 1000;
-    console.log("time : ", time);
-    console.log("delta: ", delta);
     lastFrame = time;
-    //if (counter > 6) {
     actors = [
       fps,
       pointCounter,
@@ -53,13 +49,9 @@ window.onload = () => {
     actors.forEach((e) => e.update(delta));
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     actors.forEach((e) => {
-      //ctx.save();
       e.draw(delta, ctx);
-      //ctx.restore();
     });
-    //}
 
-    //dibujaGrid(32,32,1,"#000000",ctx)
     window.requestAnimationFrame(render);
   };
 
@@ -72,11 +64,4 @@ window.onload = () => {
       }
     });
   });
-  // document.body.addEventListener("keyup", (e) => {
-  // 	actors.forEach((actor) => {
-  // 		if (actor.keyboard_event_up) {
-  // 			actor.keyboard_event_up(e.key);
-  // 		}
-  // 	});
-  // });
 };
