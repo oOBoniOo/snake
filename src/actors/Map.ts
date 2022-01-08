@@ -1,4 +1,4 @@
-import { Actor, IActor } from "./Actor";
+import { Actor } from "./Actor";
 import { Point } from "../types/Point";
 import { coorde } from "../types/Coords";
 
@@ -8,10 +8,11 @@ const between = (x: number, a: number, b: number) => {
   return x >= min && x <= max;
 };
 
-export class Map {
+export class Map extends Actor {
   libres: Point[];
   mapa: Array<Array<number>>;
-  constructor() {
+  constructor(initialPos: Point = { x: 1, y: 1 }) {
+    super(initialPos);
     this.libres = [];
     this.mapa = [
       [
@@ -46,7 +47,9 @@ export class Map {
     ];
   }
 
-  update(coord: Point, value: number) {}
+  update() {
+    this.libres = this.posLibres();
+  }
 
   updateMap(coords: coorde) {
     // for (let i = coords.xinicial; i <= coords.xfinal; i++) {
@@ -89,6 +92,7 @@ export class Map {
         }
       }
     }
+
     return libres;
   }
 

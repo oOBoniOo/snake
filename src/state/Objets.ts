@@ -22,7 +22,7 @@ class ObjetsManager {
   gameover: boolean;
   //chrono: number
   constructor(snake: Snake, numBlocks: number, blockSize: number, mapa: Map) {
-    this.maxFeed = 1;
+    this.maxFeed = 10;
     this.feedInterval = 10;
     this.numBlocks = numBlocks;
     this.blockSize = blockSize;
@@ -55,8 +55,9 @@ class ObjetsManager {
         )
       );
     }
-    this.posicionesLibres = mapa.posLibres();
-    console.log(this.posicionesLibres);
+    this.mapa.update();
+    this.posicionesLibres = this.mapa.libres;
+
     feeds.push(new Feed(_.sample(this.posicionesLibres), 20, snake));
 
     this.feeds = feeds;
@@ -67,17 +68,8 @@ class ObjetsManager {
       //this.chrono += delta
       this.feeds = this.feeds.filter((el) => !el.touched);
       //this.points += 10 - this.feeds.length;
-      if (this.feeds.length < 10) {
-        this.feeds.push(
-          new Feed(
-            {
-              x: _.random(1, this.numBlocks),
-              y: _.random(1, this.numBlocks),
-            },
-            20,
-            this.snake
-          )
-        );
+      if (this.feeds.length < this.maxFeed) {
+        this.feeds.push(new Feed(_.sample(this.posicionesLibres), 20, this.snake));
       }
       let choques = this.obstacles.filter((b) => b.crashed == true);
 

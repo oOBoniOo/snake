@@ -22,7 +22,6 @@ export class Feed extends Actor {
   update() {
     if (this.snake.counter % this.snake.velocity == 0) {
       let snakePos = this.snake.position;
-      let myPos = this.position;
 
       if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
         this.touched = true;
