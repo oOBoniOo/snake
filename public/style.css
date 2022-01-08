@@ -26,8 +26,8 @@ body {
   top: 0;
   bottom: 0;
   margin: auto;
-  width: 940px;
-  height: 890px;
+  width: 100vh;
+  height: 100vh;
   background-color: aqua;
 }
 canvas {
@@ -44,6 +44,6 @@ canvas {
 }
 
 img {
-  width: 100%;
-  height: 100%;
+  width: 100vh;
+  height: 100vh;
 }

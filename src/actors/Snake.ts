@@ -40,7 +40,7 @@ export class Snake extends Actor implements IActor {
     this.counter = 0;
     this.image = new Image();
     this.image.src = sprite;
-    this.velocity = 6;
+    this.velocity = 8;
   }
 
   update(delta: number) {
