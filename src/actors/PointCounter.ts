@@ -65,15 +65,15 @@ export class PointCounter extends Actor {
         ty * 80,
         40,
         80,
-        this.position.x + index * 8,
+        this.position.x + 16 * 4 + index * 8,
         this.position.y,
         8,
         16
       );
     });
 
-    // ctx.font = "15px Arial";
-    // ctx.fillStyle = "black";
-    // ctx.fillText(`POINTS:${points}`, this.position.x, this.position.y);
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(`POINTS:  `, this.position.x, this.position.y * 16);
   }
 }
