@@ -20,6 +20,7 @@ export class Snake extends Actor implements IActor {
   image: HTMLImageElement;
   keyboardMap: KeyboardMap;
   counter: number;
+  velocity: number;
   constructor(
     initialPos: Point, //el atributo position sera la cabeza
     keyboardMap: KeyboardMap,
@@ -30,7 +31,6 @@ export class Snake extends Actor implements IActor {
     super(initialPos);
     this.keyboardMap = keyboardMap;
     this.snakeSize = size;
-    // this.snakeColor = "#000000";
     this.xSpeed = 1;
     this.ySpeed = 0;
     this.snakeBody = [];
@@ -40,10 +40,8 @@ export class Snake extends Actor implements IActor {
     this.counter = 0;
     this.image = new Image();
     this.image.src = sprite;
+    this.velocity = 6;
   }
-  // updateLenght(): void {
-  //   this.snakeLenght += 1;
-  // }
 
   update(delta: number) {
     this.counter += 1;
@@ -52,7 +50,7 @@ export class Snake extends Actor implements IActor {
       y: this.position.y + this.ySpeed,
     };
 
-    if (this.counter % 6 == 0) {
+    if (this.counter % this.velocity == 0) {
       if (checkLimits(newPos)) {
         this.position = newPos;
       } else {

@@ -59,13 +59,15 @@ export class Obstacle extends Actor {
     this.map.updateMap(this.coords);
   }
   update() {
-    let snakePos: Point = this.snake.position;
+    if (this.snake.counter % this.snake.velocity == 0) {
+      let snakePos: Point = this.snake.position;
 
-    if (
-      between(snakePos.x, this.coords.xinicial, this.coords.xfinal) &&
-      between(snakePos.y, this.coords.yinicial, this.coords.yfinal)
-    ) {
-      this.crashed = true;
+      if (
+        between(snakePos.x, this.coords.xinicial, this.coords.xfinal) &&
+        between(snakePos.y, this.coords.yinicial, this.coords.yfinal)
+      ) {
+        this.crashed = true;
+      }
     }
   }
 

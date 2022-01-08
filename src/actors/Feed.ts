@@ -20,13 +20,15 @@ export class Feed extends Actor {
     this.touched = false;
   }
   update() {
-    let snakePos = this.snake.position;
-    let myPos = this.position;
+    if (this.snake.counter % this.snake.velocity == 0) {
+      let snakePos = this.snake.position;
+      let myPos = this.position;
 
-    if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
-      this.touched = true;
-      Objets.points += 1;
-      this.snake.snakeLenght += 1;
+      if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
+        this.touched = true;
+        Objets.points += 1;
+        this.snake.snakeLenght += 1;
+      }
     }
   }
   draw(delta: number, ctx: CanvasRenderingContext2D) {

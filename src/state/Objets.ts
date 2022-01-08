@@ -63,26 +63,28 @@ class ObjetsManager {
     this.obstacles = obstacles;
   }
   update(delta: number) {
-    //this.chrono += delta
-    this.feeds = this.feeds.filter((el) => !el.touched);
-    //this.points += 10 - this.feeds.length;
-    if (this.feeds.length < 10) {
-      this.feeds.push(
-        new Feed(
-          {
-            x: _.random(1, this.numBlocks),
-            y: _.random(1, this.numBlocks),
-          },
-          20,
-          this.snake
-        )
-      );
-    }
-    let choques = this.obstacles.filter((b) => b.crashed == true);
+    if (this.snake.counter % this.snake.velocity == 0) {
+      //this.chrono += delta
+      this.feeds = this.feeds.filter((el) => !el.touched);
+      //this.points += 10 - this.feeds.length;
+      if (this.feeds.length < 10) {
+        this.feeds.push(
+          new Feed(
+            {
+              x: _.random(1, this.numBlocks),
+              y: _.random(1, this.numBlocks),
+            },
+            20,
+            this.snake
+          )
+        );
+      }
+      let choques = this.obstacles.filter((b) => b.crashed == true);
 
-    if (choques.length > 0) {
-      this.gameover = true;
-      //alert(`GAME OVER!! Score: ${this.points}`);
+      if (choques.length > 0) {
+        this.gameover = true;
+        //alert(`GAME OVER!! Score: ${this.points}`);
+      }
     }
   }
 
