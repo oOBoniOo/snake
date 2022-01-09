@@ -6,8 +6,8 @@
 
 1. [Enlace](#id1)
 2. [Descripción](#id2)
-3. [Estructura proyecto](#id3)
-4. [Tecnologías empleadas](#id4)
+3. [Estructura proyecto](#id4)
+4. [Tecnologías empleadas](#id3)
 5. [Recursos](#id5)
 6. [Compilacion y Ejecución](#id6)
 7. [Código]
@@ -23,30 +23,30 @@
 
 <div id='id1'/>
 
+## Enlace al juego:
+
 <a href='https://oobonioo.github.io/snake'>https://oobonioo.github.io/snake</a>
 
 <div id='id2'/>
 
 ## Descripción
 
-<!-- start slipsum code -->
+<p>Juego basádo en el clásico de la serpiente del antiguo movil Nokia 3310. Se han añadido algunas texturas y objetos en el juego con los que poder interactuar.</p>
 
-<p>Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'? </p>
+<p>El movimiento en el area de juego trata de imitar el movimiento por "bloques" que se efectuava en el movil. </p>
+<p align='center'><img src="./public/imgs/gameOver1.png" alt= "ini"></p>
+<p align='center'><img src="./public/imgs/gameOver2.png" alt= "ini"></p>
+<p align='center'><img src="./public/imgs/gameOver3.png" alt= "ini"></p>
+<p>Los objetos "feed" suman puntos al marcador, mientras que cualquier choque con un obstáculo, borde o el propio cuerpo de la serpiente, forzará la finalización del juego. </p>
 
-<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
+<p>TOdavia queda pendiente la incrporación de algún actor mas al juego.</p>
 
-<p>Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'? </p>
-
-<p>Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb. </p>
-
-<!-- end slipsum code -->
 <div id='id3'/>
 
 ## Tecnología empleada
 
 - NodeJS https://nodejs.org/
 - Typescript https://www.typescriptlang.org/
-- ESLint https://eslint.org/
 - Lodash https://www.npmjs.com/package/lodash
 
 [Inicio](#id0)
@@ -55,13 +55,17 @@
 
 ## Estructura proyecto
 
+<p>El proyecto esta dividido en directorios con los archivos ts a su vez separados por actores, script principal, utilidades y controladores.
+  
+  Para los archivos multimedia y hojas de estilos se ha utilizado el directorio "public"</p>
+
 [Inicio](#id0)
 
 <div id='id5'/>
 
 ## Compilacion y Ejecución
 
-Hacer .....
+Si queremos ejecutar con parcel:
 
 ```sh
 git clone https://github.com/oOBoniOo/serpiente_mid_cnwd.git
@@ -69,6 +73,12 @@ cd serpiente_mid_cnwd
 yarn init -y
 yarn install
 yarn run dev
+```
+
+Para el despliegue en ghPages:
+
+```sh
+  yar run ghbuild
 ```
 
 [Inicio](#id0)
@@ -79,9 +89,16 @@ yarn run dev
 
 ### Sprites
 
-<p align='center'><img src="./public/sprites/SnakeFlip.png" alt= "ini"></p>
+<p align='center'><img src="./public/imgs/snake_64.png" alt= "ini"></p>
+<p align='center'><img src="./public/imgs/numbers.png" alt= "ini"></p>
+<p align='center'><img src="./public/imgs/walls.png" alt= "ini"></p>
 
-## Código de ejemplo
+## Referencias:
+
+Me sirvió de orientacion para el mapa y el "recorte" de los sprites este repositorio:
+<a href='  https://github.com/CodingWith-Adam/snake/blob/main/index.js
+'> https://github.com/CodingWith-Adam/snake/blob/main/index.js
+</a>
 
 [Inicio](#id0)
 
