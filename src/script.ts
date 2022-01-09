@@ -6,6 +6,9 @@ import { Objets, createObjets } from "./state/Objets";
 import { MAP_A } from "./utils/keyboardMap";
 import { Map } from "./actors/Map";
 
+// script principal del juego donde creamos todos los actores y los introducimos en el buble de renderizado para realizar
+//todas las acciones necesarias.
+
 window.onload = () => {
   var canvas = document.getElementById("canvas") as HTMLCanvasElement;
   var ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -14,7 +17,6 @@ window.onload = () => {
 
   let fps = new FPSViewer({ x: 15, y: 15 });
   let pointCounter = new PointCounter({ x: 100, y: 1 });
-  //let chrono = new Chronometer({ x: 200, y: 15 });
 
   let snake = new Snake({ x: 1, y: 1 }, MAP_A);
   let mapa = new Map();

@@ -10,14 +10,9 @@
 4. [Tecnologías empleadas](#id3)
 5. [Recursos](#id5)
 6. [Compilacion y Ejecución](#id6)
-7. [Código]
+7. [Referencias](#id7)
 8. [Licencias](#id7)
 9. [Agradecimientos](#id8)
-10. [?](#id9)
-11. [?](#id10)
-12. [?](#id11)
-13. [?](#id12)
-14. [?](#id13)
 
 [![WebCam Capture](https://img.youtube.com/vi/OYXPH796qXE/0.jpg)](https://www.youtube.com/embed/OYXPH796qXE?start=127)
 
@@ -93,9 +88,12 @@ Para el despliegue en ghPages:
 <p align='center'><img src="./public/imgs/numbers.png" alt= "ini"></p>
 <p align='center'><img src="./public/imgs/walls.png" alt= "ini"></p>
 
+<div id='id7'/>
+
 ## Referencias:
 
 Me sirvió de orientacion para el mapa y el "recorte" de los sprites este repositorio:
+
 <a href='  https://github.com/CodingWith-Adam/snake/blob/main/index.js
 '> https://github.com/CodingWith-Adam/snake/blob/main/index.js
 </a>

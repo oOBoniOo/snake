@@ -1,6 +1,8 @@
 import { Point } from "../types/Point";
 import { Actor, IActor } from "./Actor";
 
+/* con esta clase crearemos cada una de las partes del cuerpo de la serpiente*/
+
 export class BodyPart extends Actor {
   size: number;
   // nextPart: Point;

@@ -2,7 +2,8 @@ import { Point } from "../types/Point";
 import { Actor } from "./Actor";
 import { Objets } from "../state/Objets";
 const numeros = require("../assets/sprites/numbers.png");
-
+//utilizamos la clase Point Counter para implementar un contador de la clase
+//puntuacion  con estilo a marcador digital antiguoo.
 export class PointCounter extends Actor {
   image: HTMLImageElement;
   constructor(initialPos: Point = { x: 0, y: 0 }) {

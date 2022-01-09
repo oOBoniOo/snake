@@ -5,7 +5,8 @@ import { Obstacle } from "../actors/Obstacle";
 import { Snake } from "../actors/Snake";
 import { Map } from "../actors/Map";
 const wallsImg = require("../assets/sprites/walls.png");
-import { PointCounter } from "../actors/PointCounter";
+
+//con esta clase controlaremos la creacion y aparicion de los elementos que aparecen por el area de juego.
 
 class ObjetsManager {
   feeds: Feed[];
@@ -33,7 +34,6 @@ class ObjetsManager {
     this.image = new Image();
     this.image.src = wallsImg;
     this.points = 0;
-    //this.chrono = 0;
     let feeds: Feed[] = [];
     let obstacles: Obstacle[] = [];
     let numObstacles = 5;

@@ -5,6 +5,9 @@ import { Actor, IActor } from "./Actor";
 import { Snake } from "./Snake";
 const appleImg = require("../assets/sprites/snake_64.png");
 
+/* La clase Feed se usara para crear cada uno de los "alimentos"
+  de la serpiente que apareceran en pantalla */
+
 export class Feed extends Actor {
   blockSize: number;
   snake: Snake;
@@ -21,8 +24,10 @@ export class Feed extends Actor {
   }
   update() {
     if (this.snake.counter % this.snake.velocity == 0) {
-      let snakePos = this.snake.position;
+      //controlamos la velocidad de actualizaciónla serpiente
 
+      //comprobamos si la serpiente invade la posicion del elemento feed.
+      let snakePos = this.snake.position;
       if (this.position.x == snakePos.x && this.position.y == snakePos.y) {
         this.touched = true;
         Objets.points += 1;

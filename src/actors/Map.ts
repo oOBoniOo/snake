@@ -14,6 +14,9 @@ export class Map extends Actor {
   constructor(initialPos: Point = { x: 1, y: 1 }) {
     super(initialPos);
     this.libres = [];
+    //creamos un mapa con 0 para posicones nlibres y 1 para posicones en las que se creen obstaculos.
+    // el -1 indica la fila y columna 0, la cual no usaremos en el juego pero que esta presente en el array.
+    // de esta manera la pisicion de los elementos del juego coincidira con los indices.
     this.mapa = [
       [
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -52,11 +55,8 @@ export class Map extends Actor {
   }
 
   updateMap(coords: coorde) {
-    // for (let i = coords.xinicial; i <= coords.xfinal; i++) {
-    //   for (let j = coords.yinicial; j <= coords.yfinal; j++) {
-    //     this.mapa[i][j] = 1;
-    //   }
-    // }
+    //realizamos un doble map con el que cambiaremos los 0 por 1 en los elementos
+    //que pertenecen al espacio de un obstaculo gracias a las coordenadas del mismo
     this.mapa = this.mapa.map((row, i) =>
       row.map((el, j) => {
         if (
@@ -84,6 +84,8 @@ export class Map extends Actor {
     this.mapa[i][j] = 1;
   }
   posLibres(): Point[] {
+    //generamos array de posiciones libres para que el resto de elementos dinamicos
+    // nunca aparezcan en posiciones solapadas.
     let libres: Point[] = [];
     for (let i = 1; i <= 25; i++) {
       for (let j = 1; j <= 25; j++) {

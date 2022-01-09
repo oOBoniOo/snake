@@ -8,9 +8,12 @@ import { BodyPart } from "./BodyPart";
 import { Objets } from "../state/Objets";
 const sprite = require("../assets/sprites/snake_64.png");
 
+//Esta es la clase principal de la serpiente donde tendremos la posicion de la cabeza de la serpiente de la
+//serpiente, controlaremos los puntos de parada por choques con cualquier element y pintaremos segun la direccion y posiciones de otras de la
+//partes del cuerpo.
+
 export class Snake extends Actor implements IActor {
   snakeSize: Size;
-  // snakeColor: string;
   snakeBody: BodyPart[];
   snakeLenght: number;
   xSpeed: number;
@@ -86,6 +89,7 @@ export class Snake extends Actor implements IActor {
       }
     }
   }
+  //en el pintado de la serpiente diferenciamos la cabeza, cola y partes intermedias.
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     let tx = 0;
