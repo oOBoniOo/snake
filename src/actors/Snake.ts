@@ -7,6 +7,7 @@ import { snakeKey, KeyboardMap } from "../utils/keyboardMap";
 import { BodyPart } from "./BodyPart";
 import { Objets } from "../state/Objets";
 const sprite = require("../assets/sprites/snake_64.png");
+//const fs = require("fs-extra");
 
 //Esta es la clase principal de la serpiente donde tendremos la posicion de la cabeza de la serpiente de la
 //serpiente, controlaremos los puntos de parada por choques con cualquier element y pintaremos segun la direccion y posiciones de otras de la
@@ -44,6 +45,10 @@ export class Snake extends Actor implements IActor {
     this.image = new Image();
     this.image.src = sprite;
     this.velocity = 8;
+  }
+
+  updateBest(points: number) {
+    const bestjs = fs.readJsonSync("../utils/best.json");
   }
 
   update(delta: number) {

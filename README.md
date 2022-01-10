@@ -43,6 +43,7 @@
 - NodeJS https://nodejs.org/
 - Typescript https://www.typescriptlang.org/
 - Lodash https://www.npmjs.com/package/lodash
+- fs-extra https://www.npmjs.com/package/fs-extra
 
 [Inicio](#id0)
 
