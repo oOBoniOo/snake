@@ -10,7 +10,9 @@ import { Map } from "./actors/Map";
 //todas las acciones necesarias.
 
 window.onload = () => {
-  alert("utiliza las flechas del teclado \npara dirigir a la serpiente");
+  alert(
+    "utiliza las flechas del teclado para dirigir a la serpiente \n Tu objetivo es comer la mayoria de feeds posibles"
+  );
   var canvas = document.getElementById("canvas") as HTMLCanvasElement;
   var ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
   const numBlocks: number = 25;
