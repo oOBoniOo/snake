@@ -41,9 +41,12 @@
 ## Tecnología empleada
 
 - NodeJS https://nodejs.org/
+- yarn https://classic.yarnpkg.com/en/
 - Typescript https://www.typescriptlang.org/
 - Lodash https://www.npmjs.com/package/lodash
 - fs-extra https://www.npmjs.com/package/fs-extra
+- github https://github.com/oOBoniOo
+- ghPages (despliegue del juego)
 
 [Inicio](#id0)
 
@@ -52,8 +55,30 @@
 ## Estructura proyecto
 
 <p>El proyecto esta dividido en directorios con los archivos ts a su vez separados por actores, script principal, utilidades y controladores.
-  
-  Para los archivos multimedia y hojas de estilos se ha utilizado el directorio "public"</p>
+  - `src`:
+    - `actors`:
+      - `Actors.ts`: Aqui esta definido el la interface y clase actor de la que heredan todos los actores del juego.
+      - `BodyPArts.ts`: Representa cada una de las partes del cuerpo de la serpiente.
+      - `Chronometer.ts`: *No usado* se espera usar en el futuro para guardar tiempos, puntuaciones y mas funcionalidades.
+      - `Feed.ts`: Con el modulo feed conseguimos crear cada una de las "comidas" que la serpiente tendra en el area de juego.
+      - `FPSViewer.ts`: visor de FPS
+      - `Map.ts`: con la clase mapa, almacenamos y gestionamos las posiciones donde no podrán aparecer objetos puesto que ya estan ocupadas-
+      - `Obstacle.ts`: Representa cada uno de los obstaculos que se crean ene le juego.
+      - `PointCounter.ts`: con este modulo, pintamos la puntuacion en el canvas.
+    - `assets`:
+      - `sprites`: tesxturas usadas para representar los objetos del juego.
+    - `state`: 
+      - `Objets`: este modulo se encarga de gestionar los objetos extra(todo menos la serpiente) que aparecen en el juego.
+    - `types`:
+      - `Coords.ts`: tipo de las coordenadas de los obstaculos
+      - `Point.ts`: tipo para las ubicaciones de los actores.
+      - `Size.ts`: tipo para los tamaños.
+    - `utils`: 
+      - `checkLimits.ts`: controla los limites del juego para el choque de la serpiente.
+      - `keyboardMap.ts`: controla las pulsaciones de las teclas.
+    - `script.ts`: controlador principal del juego(renderizado, inicialización de actores)
+
+Para los archivos multimedia y hojas de estilos se ha utilizado el directorio "public"</p>
 
 [Inicio](#id0)
 
