@@ -33,9 +33,8 @@ window.onload = () => {
   ];
 
   let lastFrame = 0;
-  let counter = 0;
+
   const render = (time: number) => {
-    counter += 1;
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
     actors = [
@@ -47,7 +46,7 @@ window.onload = () => {
       ...Objets.obstacles,
       ...snake.snakeBody,
     ];
-    counter = 0;
+
     actors.forEach((e) => e.update(delta));
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     actors.forEach((e) => {
