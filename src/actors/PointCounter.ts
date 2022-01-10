@@ -76,5 +76,8 @@ export class PointCounter extends Actor {
     ctx.font = "15px Arial";
     ctx.fillStyle = "black";
     ctx.fillText(`POINTS:  `, this.position.x, this.position.y * 16);
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(`BEST:   `, this.position.x + 16 * 8, this.position.y * 16);
   }
 }
