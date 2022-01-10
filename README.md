@@ -27,6 +27,9 @@
 ## Descripción
 
 <p>Juego basádo en el clásico de la serpiente del antiguo movil Nokia 3310. Se han añadido algunas texturas y objetos en el juego con los que poder interactuar.</p>
+<p>Para interactuar con el juego simplemente utiliza las flechas del teclado.</p>
+
+<p align='center'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Arrow_keys.jpg/200px-Arrow_keys.jpg" alt= "ini"></p>
 
 <p>El movimiento en el area de juego trata de imitar el movimiento por "bloques" que se efectuava en el movil. </p>
 <p align='center'><img src="./public/imgs/gameOver1.png" alt= "ini"></p>
