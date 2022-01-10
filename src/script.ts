@@ -10,6 +10,7 @@ import { Map } from "./actors/Map";
 //todas las acciones necesarias.
 
 window.onload = () => {
+  alert("utiliza las flechas del teclado \npara dirigir a la serpiente");
   var canvas = document.getElementById("canvas") as HTMLCanvasElement;
   var ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
   const numBlocks: number = 25;
