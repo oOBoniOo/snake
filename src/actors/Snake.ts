@@ -12,6 +12,20 @@ const sprite = require("../assets/sprites/snake_64.png");
 //Esta es la clase principal de la serpiente donde tendremos la posicion de la cabeza de la serpiente de la
 //serpiente, controlaremos los puntos de parada por choques con cualquier element y pintaremos segun la direccion y posiciones de otras de la
 //partes del cuerpo.
+const delay = async (n: number) => {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, n * 1000);
+  });
+};
+const pausar = async (n: number) => {
+  //Do what you want here
+  console.log("Before the delay");
+
+  await delay(n);
+
+  console.log("After the delay");
+  //Do what you want here too
+};
 
 export class Snake extends Actor implements IActor {
   snakeSize: Size;
@@ -25,6 +39,7 @@ export class Snake extends Actor implements IActor {
   keyboardMap: KeyboardMap;
   counter: number;
   velocity: number;
+  gameOver: boolean;
   constructor(
     initialPos: Point, //el atributo position sera la cabeza
     keyboardMap: KeyboardMap,
@@ -45,6 +60,7 @@ export class Snake extends Actor implements IActor {
     this.image = new Image();
     this.image.src = sprite;
     this.velocity = 8;
+    this.gameOver = false;
   }
 
   updateBest(points: number) {
@@ -62,12 +78,14 @@ export class Snake extends Actor implements IActor {
       if (checkLimits(newPos)) {
         this.position = newPos;
       } else {
-        alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
-        location.reload();
+        this.gameOver = true;
+        //alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
+        //location.reload();
       }
       if (Objets.gameover) {
-        alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
-        location.reload();
+        this.gameOver = true;
+        //alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
+        //location.reload();
       }
       //añadimos partes.
       let cabeza = new BodyPart(this.position, this.blockSize, this.xSpeed, this.ySpeed);
@@ -89,133 +107,145 @@ export class Snake extends Actor implements IActor {
         }
       });
       if (_.sum(choque) > 0) {
-        alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
-        location.reload();
+        this.gameOver = true;
+        //alert(`GAME OVER! Puntuación: ${Objets.points} \n\nPulsa "Aceptar" para volver a empezar.`);
+        //location.reload();
       }
     }
   }
+
   //en el pintado de la serpiente diferenciamos la cabeza, cola y partes intermedias.
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
-    let tx = 0;
-    let ty = 0;
-    if (this.xSpeed == 1) {
-      tx = 4;
-      ty = 0;
-    }
-    if (this.xSpeed == -1) {
-      tx = 3;
-      ty = 1;
-    }
-    if (this.ySpeed == 1) {
-      tx = 4;
-      ty = 1;
-    }
-    if (this.ySpeed == -1) {
-      tx = 3;
-      ty = 0;
-    }
+    if (this.gameOver) {
+      ctx.font = "30px Comic Sans MS";
+      ctx.fillStyle = "black";
+      ctx.textAlign = "center";
+      ctx.fillText(`GAME OVER! Puntuación: ${Objets.points}`, 250, 250);
+      ctx.fillText(`Pulsa "ENTER" o "F5" para volver a empezar.`, 250, 300);
 
-    ctx.drawImage(
-      this.image,
-      tx * 64,
-      ty * 64,
-      64,
-      64,
-      (this.position.x - 1) * this.blockSize,
-      (this.position.y - 1) * this.blockSize,
-      this.blockSize,
-      this.blockSize
-    );
-    this.snakeBody.map((el, index) => {
-      if (index != this.snakeBody.length - 1) {
-        if (index == 0) {
-          //pintamos la cola.
-          if (this.snakeBody[index + 1].position.x > el.position.x) {
-            tx = 4;
-            ty = 2;
-          }
-          if (this.snakeBody[index + 1].position.x < el.position.x) {
-            tx = 3;
-            ty = 3;
-          }
-          if (this.snakeBody[index + 1].position.y > el.position.y) {
-            tx = 4;
-            ty = 3;
-          }
-          if (this.snakeBody[index + 1].position.y < el.position.y) {
-            tx = 3;
-            ty = 2;
-          }
-          ctx.drawImage(
-            this.image,
-            tx * 64,
-            ty * 64,
-            64,
-            64,
-            (el.position.x - 1) * this.blockSize,
-            (el.position.y - 1) * this.blockSize,
-            this.blockSize,
-            this.blockSize
-          );
-        } else {
-          if (
-            (this.snakeBody[index + 1].xSpeed == 1 && el.xSpeed == 1) ||
-            (this.snakeBody[index + 1].xSpeed == -1 && el.xSpeed == -1)
-          ) {
-            tx = 1;
-            ty = 0;
-          }
-          if (
-            (this.snakeBody[index + 1].ySpeed == 1 && el.ySpeed == 1) ||
-            (this.snakeBody[index + 1].ySpeed == -1 && el.ySpeed == -1)
-          ) {
-            tx = 2;
-            ty = 1;
-          }
-          if (
-            (el.xSpeed == 1 && this.snakeBody[index + 1].ySpeed == 1) ||
-            (el.ySpeed == -1 && this.snakeBody[index + 1].xSpeed == -1)
-          ) {
-            tx = 2;
-            ty = 0;
-          }
-          if (
-            (el.xSpeed == 1 && this.snakeBody[index + 1].ySpeed == -1) ||
-            (el.ySpeed == 1 && this.snakeBody[index + 1].xSpeed == -1)
-          ) {
-            tx = 2;
-            ty = 2;
-          }
-          if (
-            (el.xSpeed == -1 && this.snakeBody[index + 1].ySpeed == 1) ||
-            (el.ySpeed == -1 && this.snakeBody[index + 1].xSpeed == 1)
-          ) {
-            tx = 0;
-            ty = 0;
-          }
-          if (
-            (el.xSpeed == -1 && this.snakeBody[index + 1].ySpeed == -1) ||
-            (el.ySpeed == 1 && this.snakeBody[index + 1].xSpeed == 1)
-          ) {
-            tx = 0;
-            ty = 1;
-          }
-
-          ctx.drawImage(
-            this.image,
-            tx * 64,
-            ty * 64,
-            64,
-            64,
-            (el.position.x - 1) * this.blockSize,
-            (el.position.y - 1) * this.blockSize,
-            this.blockSize,
-            this.blockSize
-          );
-        }
+      pausar(10);
+    } else {
+      let tx = 0;
+      let ty = 0;
+      if (this.xSpeed == 1) {
+        tx = 4;
+        ty = 0;
       }
-    });
+      if (this.xSpeed == -1) {
+        tx = 3;
+        ty = 1;
+      }
+      if (this.ySpeed == 1) {
+        tx = 4;
+        ty = 1;
+      }
+      if (this.ySpeed == -1) {
+        tx = 3;
+        ty = 0;
+      }
+
+      ctx.drawImage(
+        this.image,
+        tx * 64,
+        ty * 64,
+        64,
+        64,
+        (this.position.x - 1) * this.blockSize,
+        (this.position.y - 1) * this.blockSize,
+        this.blockSize,
+        this.blockSize
+      );
+      this.snakeBody.map((el, index) => {
+        if (index != this.snakeBody.length - 1) {
+          if (index == 0) {
+            //pintamos la cola.
+            if (this.snakeBody[index + 1].position.x > el.position.x) {
+              tx = 4;
+              ty = 2;
+            }
+            if (this.snakeBody[index + 1].position.x < el.position.x) {
+              tx = 3;
+              ty = 3;
+            }
+            if (this.snakeBody[index + 1].position.y > el.position.y) {
+              tx = 4;
+              ty = 3;
+            }
+            if (this.snakeBody[index + 1].position.y < el.position.y) {
+              tx = 3;
+              ty = 2;
+            }
+            ctx.drawImage(
+              this.image,
+              tx * 64,
+              ty * 64,
+              64,
+              64,
+              (el.position.x - 1) * this.blockSize,
+              (el.position.y - 1) * this.blockSize,
+              this.blockSize,
+              this.blockSize
+            );
+          } else {
+            if (
+              (this.snakeBody[index + 1].xSpeed == 1 && el.xSpeed == 1) ||
+              (this.snakeBody[index + 1].xSpeed == -1 && el.xSpeed == -1)
+            ) {
+              tx = 1;
+              ty = 0;
+            }
+            if (
+              (this.snakeBody[index + 1].ySpeed == 1 && el.ySpeed == 1) ||
+              (this.snakeBody[index + 1].ySpeed == -1 && el.ySpeed == -1)
+            ) {
+              tx = 2;
+              ty = 1;
+            }
+            if (
+              (el.xSpeed == 1 && this.snakeBody[index + 1].ySpeed == 1) ||
+              (el.ySpeed == -1 && this.snakeBody[index + 1].xSpeed == -1)
+            ) {
+              tx = 2;
+              ty = 0;
+            }
+            if (
+              (el.xSpeed == 1 && this.snakeBody[index + 1].ySpeed == -1) ||
+              (el.ySpeed == 1 && this.snakeBody[index + 1].xSpeed == -1)
+            ) {
+              tx = 2;
+              ty = 2;
+            }
+            if (
+              (el.xSpeed == -1 && this.snakeBody[index + 1].ySpeed == 1) ||
+              (el.ySpeed == -1 && this.snakeBody[index + 1].xSpeed == 1)
+            ) {
+              tx = 0;
+              ty = 0;
+            }
+            if (
+              (el.xSpeed == -1 && this.snakeBody[index + 1].ySpeed == -1) ||
+              (el.ySpeed == 1 && this.snakeBody[index + 1].xSpeed == 1)
+            ) {
+              tx = 0;
+              ty = 1;
+            }
+
+            ctx.drawImage(
+              this.image,
+              tx * 64,
+              ty * 64,
+              64,
+              64,
+              (el.position.x - 1) * this.blockSize,
+              (el.position.y - 1) * this.blockSize,
+              this.blockSize,
+              this.blockSize
+            );
+          }
+        }
+      });
+    }
   }
 
   keyboard_event_down(key: string) {
@@ -239,6 +269,17 @@ export class Snake extends Actor implements IActor {
       if (this.ySpeed != -1) {
         this.xSpeed = 0;
         this.ySpeed = 1;
+      }
+    } else if (tecla == snakeKey.ENTER) {
+      if (this.ySpeed != -1) {
+        this.gameOver = false;
+        this.position.x = 1;
+        this.position.y = 1;
+        this.xSpeed = 0;
+        this.ySpeed = 0;
+        this.snakeBody = [];
+        this.snakeLenght = 2;
+        this.counter = 0;
       }
     }
   }

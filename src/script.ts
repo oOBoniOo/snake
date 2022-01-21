@@ -10,9 +10,6 @@ import { Map } from "./actors/Map";
 //todas las acciones necesarias.
 
 window.onload = () => {
-  alert(
-    "-_-_-_ INSTRUCCIONES _-_-_-\n\n*** Utiliza las flechas del teclado \npara dirigir a la serpiente *** \n\n Tu objetivo es comer la mayoria de feeds posibles"
-  );
   var canvas = document.getElementById("canvas") as HTMLCanvasElement;
   var ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
   const numBlocks: number = 25;
@@ -49,12 +46,13 @@ window.onload = () => {
       ...Objets.obstacles,
       ...snake.snakeBody,
     ];
-
-    actors.forEach((e) => e.update(delta));
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    actors.forEach((e) => {
-      e.draw(delta, ctx);
-    });
+    if (!snake.gameOver) {
+      actors.forEach((e) => e.update(delta));
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      actors.forEach((e) => {
+        e.draw(delta, ctx);
+      });
+    }
 
     window.requestAnimationFrame(render);
   };
