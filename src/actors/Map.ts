@@ -74,7 +74,6 @@ export class Map extends Actor {
         }
       })
     );
-    console.log(this.mapa);
   }
 
   liberar(i: number, j: number) {
